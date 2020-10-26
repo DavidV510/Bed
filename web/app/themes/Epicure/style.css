@@ -1,0 +1,132 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+@font-face {
+    font-family:'Helvetica-Bold';
+    src: url(http://epicure.local/app/themes/Epicure/fonts/Helvetica-Bold.ttf);
+}
+
+@font-face {
+    font-family:'HelveticaNeue-BlackCond';
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-BlackCond.ttf);
+}
+
+@font-face {
+    font-family:'HelveticaNeue-Light';
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Light.ttf);
+}
+
+@font-face {
+    font-family:'HelveticaNeue-Medium';
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Medium.ttf);
+}
+
+@font-face {
+    font-family:'HelveticaNeue-Thin';
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Thin.ttf);
+}
+
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    margin-top: 0px !important;
+}
+body{
+   position: relative;
+   font-family: var(--Medium);
+}
+
+:root{
+    --backColor:rgb(146, 18, 18);
+    --mask: #f9f4ea;
+    --white:white;
+    --black:black;
+    --Medium:'HelveticaNeue-Medium';
+    --Thin:'HelveticaNeue-Thin';
+    --Light:'HelveticaNeue-Light';
+    --Black:'HelveticaNeue-BlackCond';
+    --Bold:'Helvetica-Bold';
+}
+
+.container{
+    max-width: 110rem !important;
+    margin: 0 auto;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ul{
+    list-style: none;
+}
+
+
+.thanks{
+    text-align: center;
+    font-size: 10rem;
+    font-family: var(--Thin);
+    margin-top: 5rem;
+    height: 30vw;
+}
+
+@media(max-width:768px){
+    .container {
+        max-width: 92.5vw;
+        margin: 0 auto;
+    }
+}
+
+
+.side{
+    background-color: white;
+    border: solid 2px black;
+    border-radius: 12px;
+    height: 2rem;
+    width: 2rem;
+    padding: 0.15vw;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    margin-right: 1.2rem;
+}
+.side .inside{
+    display: none;
+    border-radius: 12px;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+.change{
+    background-color: white;
+    border: solid 2px black;
+    margin-bottom: 2rem;
+    height: 2rem;
+    width: 2rem;
+    padding: 0.3rem 0.1rem;
+    cursor: pointer;
+    margin-right: 1.2rem;
+}
+
+.change .inside{
+    display: none;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: -0.45vw
+}

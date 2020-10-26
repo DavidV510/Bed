@@ -1,0 +1,56 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Foot */
+
+.footer{
+    width: 50vw;
+    margin: 3.7rem auto;
+    padding-top: 2rem;
+    box-shadow: 0 -1px 1px -1px rgba(0, 0, 0, 0.15);
+}
+.footer #menu-footer-menu{
+    display: grid;
+    grid-template-columns: repeat(3,33%);
+    text-align: center;
+   
+}
+.footer #menu-footer-menu a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-family: var(--Thin);
+    letter-spacing: 1.13px;
+}
+
+
+@media(max-width:768px){
+    .footer{
+        width: 90vw;
+        margin: 3.7rem auto;
+        box-shadow: none;
+    }
+    .footer #menu-footer-menu{
+        display: block;
+        padding: 0;
+    }
+    .footer #menu-footer-menu li{
+        margin-bottom: 2rem;
+    }
+    .footer #menu-footer-menu a{
+        font-size:3.2vw;
+        letter-spacing: 0.76px;
+    }
+}
+

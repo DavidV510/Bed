@@ -1,0 +1,68 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Cart */
+
+.Cart{
+    margin-top: 5rem;
+}
+
+.Cart .tHead{
+    font-size: 2rem;
+    font-family: var(--Light);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.Cart .table-img{
+    width: 15rem;
+    height: 12rem
+}
+
+.Cart tr td{
+    font-size: 2rem;
+    font-family: var(--Thin);
+}
+
+.cart-form{
+    font-family: var(--Light);
+    font-size: 2.5rem;
+    padding-left: 1.5rem;
+}
+
+.cart-form .form-Stuff{
+    margin-bottom: 3rem;
+}
+
+.cart-form .form-Stuff input{
+    border-radius: 4px;
+    border: solid 0.6px var(--black);
+}
+
+.CartButton{
+    border: none;
+    color: black;
+    font-family: var(--Light);
+    font-size: 2.8rem;
+    padding: 1rem 2rem;
+    background-color: rgba(232, 196, 122, 0.8);
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.CartButton:hover{
+    background-color: brown;
+    color: white;
+}
+

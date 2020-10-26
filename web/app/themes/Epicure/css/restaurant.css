@@ -1,0 +1,289 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Restaurant */
+.resContainer{
+    max-width: 130rem;
+    margin: 0 auto;
+}
+.res-Thumnail{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 47rem;
+}
+
+.resContainer .resDetails{
+    width: 100%;
+    text-align: center;
+}
+
+.resContainer .resDetails h1{
+    margin: 0;
+    margin-top: 2.7rem;
+    margin-bottom: 0.8rem;
+    font-size: 5.5rem;
+    font-family: var(--Light);
+    letter-spacing: 3.67px;
+}
+
+.resContainer .resDetails p{
+    margin: 0;
+    font-size: 3rem;
+    font-family: var(--Thin);
+    letter-spacing: 2px;
+}
+
+.resContainer .resDetails .openTime{
+    font-size: 1.8rem;
+    font-family: var(--Thin);
+    margin-top: 2.7rem;
+}
+
+.resContainer #dishes{
+    display: grid;
+    grid-template-columns: 35% 30% 30%;
+    grid-gap: 0px;
+    width: 44rem;
+    margin: 3rem auto;
+    padding-left: 1.5rem;
+}
+
+.resContainer #dishes button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 2.5rem;
+    width: 12rem;
+    outline: none;
+    padding-bottom: 0.5rem;
+    font-family: var(--Thin);
+
+}
+.resContainer #dishes button:nth-child(1){
+    border-bottom: solid 2.3px rgba(222, 144, 0, 0.466);
+}
+
+
+.resContainer #dishes button:focus {
+    outline:0;
+}
+
+
+
+.resContainer .theDishes{
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    grid-gap: 10px;
+    text-align: center;
+    padding-left: 0;
+}
+
+.resContainer .theDishes .theDish{
+    height: 45rem;
+    width: 28.6rem;
+    background-color: var(--mask);
+    cursor: pointer;
+}
+
+.resContainer .theDishes .theDish .theDish-Img{
+    width: 100%;
+    height: 15rem;
+}
+
+.resContainer .theDishes .theDish .theDish-Title{
+    font-size: 2.2rem;
+    font-family: var(--Medium);
+    margin: 0;
+    margin-top: 1.8rem;
+    margin-bottom: 1.3rem;
+}
+
+.resContainer .theDishes .theDish .theDish-Content{
+    font-size: 1.9rem;
+    font-family: var(--Thin);
+    margin: 0;
+    padding: 0 3.3rem;
+    line-height: 2.2rem;
+    height: 18.5rem;
+}
+
+.resContainer .theDishes .theDish .theDish-Price{
+    width: 75%; 
+    text-align: center; 
+    border-bottom: 1px solid #979797; 
+    line-height: 0.1em;
+    margin: 10px auto; 
+    font-family: var(--Thin);
+}
+
+.resContainer .theDishes .theDish .theDish-Price span {
+    background: var(--mask);
+    padding: 0px 10px;
+    font-size: 24.9px;
+    letter-spacing: 1.66px;
+    
+    position: relative;
+    top:0.7rem;
+}
+.resContainer .theDishes .theDish .theDish-Price span svg{
+    margin-right: 0.2rem;
+}
+
+
+/* Single Dish */
+
+.theDish{
+    height: 40rem;
+    width: 23.6rem;
+    background-color: var(--mask);
+    cursor: pointer;
+}
+
+.the-restaurants .theDishes .theDish .theDish-Img{
+    width: 100%;
+    height: 15rem;
+}
+
+.the-restaurants .theDishes .theDish .theDish-Title{
+    font-size: 2.2rem;
+    font-family: var(--Medium);
+    margin: 0;
+    margin-top: 1.8rem;
+    margin-bottom: 1.3rem;
+}
+
+.the-restaurants .theDishes .theDish .theDish-Content{
+    font-size: 1.9rem;
+    font-family: var(--Thin);
+    margin: 0;
+    padding: 0 3.3rem;
+    height: 13.2rem;
+}
+
+.the-restaurants .theDishes .theDish .theDish-Price{
+    width: 75%; 
+    text-align: center; 
+    border-bottom: 1px solid #979797; 
+    line-height: 0.1em;
+    margin: 10px auto; 
+    font-family: var(--Thin);
+}
+
+.the-restaurants .theDishes .theDish .theDish-Price span {
+    background: var(--mask);
+    padding: 0px 10px;
+    font-size: 24.9px;
+    letter-spacing: 1.66px;
+    
+    position: relative;
+    top:0.7rem;
+}
+.the-restaurants .theDishes .theDish .theDish-Price span svg{
+    margin-right: 0.2rem;
+}
+
+
+
+
+
+
+/* Responsive Restaurant */
+
+@media(max-width:768px){
+    .res-Thumnail {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 85vw;
+    }
+
+    .resContainer .resDetails h1 {
+        margin: 0;
+        margin-top: 2.7rem;
+        margin-bottom: 0.8rem;
+        font-size: 10vw;
+        font-family: var(--Light);
+        letter-spacing: 3.67px;
+    }
+
+    .resContainer .resDetails p {
+        margin: 0;
+        font-size: 5.5vw;
+        font-family: var(--Thin);
+        letter-spacing: 2px;
+    }
+
+    .resContainer #dishes {
+        display: grid;
+        grid-template-columns: 35% 30% 30%;
+        grid-gap: 10px;
+        width: 34rem;
+        text-align: center;
+        font-size: 1vw;
+        margin: 3rem auto;
+        padding-left: 4vw;
+    }
+
+
+
+    .resContainer #dishes button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 4vw;
+        width: 20vw;
+        outline: none;
+        padding-bottom: 0.5rem;
+        font-family: var(--Thin);
+    }
+    
+
+
+    .resContainer .theDishes {
+        display: block;
+        width: 100%;
+        padding: 0 7vw;
+    }
+
+
+    .resContainer .theDishes .theDish {
+        height: 125vw;
+        width: 100%;
+        background-color: var(--mask);
+        cursor: pointer;
+        margin-bottom: 10vw;
+    }
+
+
+    /* Modal Responsive ! ! !  */
+    .modal .innerModal {
+        width: 100%;
+        margin: 0 auto;
+        pointer-events: auto;
+    }
+
+    .modal .innerModal .modal-dialog .modal-dish-img {
+        width: 100%;
+        height: 63vw;
+    }
+
+    .modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content {
+        width: 23.3rem;
+        margin: 1vw 0vw 1vw 19vw;
+        padding-bottom: 5rem;
+    }
+
+
+}

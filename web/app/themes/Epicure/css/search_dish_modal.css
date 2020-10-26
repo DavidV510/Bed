@@ -1,0 +1,296 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+.SearchCont{
+    max-width: 130rem;
+    margin: 0 auto;
+}
+
+/* Search Modal Dish */
+
+/* Dish Modal */
+.modal-dialog{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.modal{
+
+}
+
+.modal .innerModal{
+    width: 70rem;
+    margin: 0 auto;
+    pointer-events: auto;
+}
+
+.modal .innerModal .close{
+    margin-top: 4.5rem;
+    margin-bottom: 0.9rem;
+    float: left;
+    position: relative;
+    z-index: 40;
+}
+
+.modal .innerModal .modal-dialog{
+    margin: 0 !important;
+    pointer-events: auto;
+    
+}
+
+.modal .innerModal .modal-dialog .modal-dish-img{
+    width: 70rem;
+    height: 39rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner{
+    width: 70rem;
+    margin-top: 7rem;
+    background-color: white;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-title{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-title .icon{
+    width: 1.5vw;
+    height: 1.5vw;
+    position: relative;
+    right: 2rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-title .title{
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 2.33px;
+    font-family: var(--Medium);
+    padding-top: 2.7rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content{
+    width: 23.3rem;
+    margin: 1rem 0rem 1rem 25rem;
+    padding-bottom: 5rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content p{
+    font-size: 1.4rem;
+    letter-spacing: 0.93px;
+    text-align: center;
+    font-family: var(--Thin);
+    margin-bottom: 1.4rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-price{
+    font-size: 2.4rem;
+    letter-spacing: 1.03px;
+    border-bottom: 1px solid #979797; 
+    line-height: 0.1em;
+    margin: 10px auto; 
+    font-family: var(--Thin);
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-price span {
+    background: white;
+    padding: 0px 10px;
+    font-size: 24.9px;
+    letter-spacing: 1.66px;
+    
+    position: relative;
+    top:0.7rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side{
+    margin-top: 4.2rem;
+    font-family: var(--Thin);
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side h1{
+    margin: 0 auto;
+    border-bottom: solid 1.8px rgba(222, 146, 0, 0.9);
+    font-family: var(--Thin);
+    padding-bottom: 0.25rem;
+    width: 16.5rem;
+    opacity: 0.5;
+}
+
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick{
+    margin-top: 2.5rem;
+    text-align: left;
+    pointer-events: auto;
+
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick{
+    font-size: 1.8rem;
+    display: flex;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick input[type=radio]{
+    cursor: pointer;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .:checked{
+    background-color: black !important;
+    color: #000;
+}
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .::after{
+    background-color: black !important;
+    color: #000;
+}
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .::before{
+    background-color: black !important;
+    color: #000;
+}
+
+
+
+/* Modal Change */
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change{
+    margin-top: 4.2rem;
+    font-family: var(--Thin);
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change h1{
+    margin: 0 auto;
+    border-bottom: solid 1.8px rgba(222, 146, 0, 0.9);
+    font-family: var(--Thin);
+    padding-bottom: 0.25rem;
+    width: 14rem;
+    opacity: 0.5;
+}
+
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick{
+    margin-top: 2.5rem;
+    text-align: left;
+    pointer-events: auto;
+
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick{
+    font-size: 1.8rem;
+    display: flex;
+}
+
+
+
+/* //////////// */
+
+
+/* Modal Quantity */
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity{
+    margin-top: 3rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity h1{
+    margin: 0 auto;
+    border-bottom: solid 1.8px rgba(222, 146, 0, 0.9);
+    font-family: var(--Thin);
+    padding-bottom: 0.25rem;
+    width: 14rem;
+    opacity: 0.5;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .quant{
+    display: grid;
+    grid-template-columns: repeat(3,33%);
+    width: 12rem;
+    margin: 1.5rem auto;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .quant button{
+    border: none;
+    background-color: transparent;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .quant button:focus {
+   
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .reduce{
+    font-size: 1.8rem;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .number{
+    font-size: 1.8rem;
+    font-family: var(--Thin);
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-quantity .add{
+    font-size: 1.8rem;
+}
+
+
+/* ///////////////////////// */
+
+
+/* ADD TO BAG MODAL */
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-add-bag{
+    margin-top: 4rem;
+    pointer-events: auto;
+}
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-add-bag button{
+    border-radius: 2.1px;
+    border: none;
+    color: white;
+    font-size: 1.89rem;
+    font-family: var(--Thin);
+    background-color: #000;;
+    letter-spacing: 1.08px;
+    text-align: center;
+    padding: 1.7rem 3.1rem;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-add-bag button:hover{
+    background-color: rgba(222, 146, 0, 0.9);
+    color: #000;
+}
+
+
+.modal .form-check-input{
+    
+}
+
+
+
+@media(max-width:768px){
+    /* Modal Responsive ! ! !  */
+    .modal .innerModal {
+        width: 100%;
+        margin: 0 auto;
+        pointer-events: auto;
+    }
+
+    .modal .innerModal .modal-dialog .modal-dish-img {
+        width: 100%;
+        height: 63vw;
+    }
+    .modal .innerModal .modal-dialog .modal-dish-inner {
+        width: 100%;
+        margin-top: 7rem;
+        background-color: white;
+    }
+
+    .modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content {
+        width: 23.3rem;
+        margin: 1vw 0vw 1vw 19vw;
+        padding-bottom: 5rem;
+    }
+
+}

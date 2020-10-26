@@ -1,0 +1,67 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Radio */
+
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked) {
+    position: absolute !important;
+    left: 2rem !important;
+}
+input[type="radio"]:checked + label,
+input[type="radio"]:not(:checked) + label
+{
+    position: relative !important;
+    padding-left: 28px !important;
+    cursor: pointer !important;
+    line-height: 20px !important;
+    display: inline-block !important;
+    color: #666 !important;
+}
+input[type="radio"]:checked + label:before,
+input[type="radio"]:not(:checked) + label:before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 100% !important;
+    background: #fff !important;
+}
+input[type="radio"]:checked + label:after,
+input[type="radio"]:not(:checked) + label:after {
+    content: '' !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #F87DA9 !important;
+    position: absolute !important;
+    top: 4px !important;
+    left: 4px !important;
+    border-radius: 100% !important;
+    -webkit-transition: all 0.2s ease !important;
+    transition: all 0.2s ease !important;
+}
+input[type="radio"]:not(:checked) + label:after {
+    opacity: 0 !important;
+    -webkit-transform: scale(0) !important;
+    transform: scale(0) !important;
+}
+input[type="radio"]:checked + label:after {
+    opacity: 1 !important;
+    -webkit-transform: scale(1) !important;
+    transform: scale(1) !important;
+    background-color: red;
+}

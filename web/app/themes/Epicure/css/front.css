@@ -1,0 +1,1029 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Front */
+body{
+    margin: 0;
+}
+
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input:focus{
+    outline: 0;
+}
+
+
+
+/* Open Section */
+.open{
+    height: 75rem;
+    background-position: 0rem 0rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.open .open-inner {
+    padding: 0.5rem 14rem;
+    width: 53%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.88);
+    position: relative;
+    top: 20rem;
+    height: 30rem;
+}
+
+.open .open-inner .open-text{
+    text-align: center;
+    padding: 0rem 5rem;
+    line-height: 1.1;
+    font-size: 5rem;
+    font-family: var(--Thin);
+    margin-bottom: 0;
+    margin-top: 5rem;
+    position: relative;
+    left: 1.5rem;
+}
+
+.open .open-inner .open-search {
+    position: relative;
+    left: 1.2rem;
+}
+.open .open-inner .open-search .search-form{
+    position: relative;
+    right: 2.2rem;
+    top:1vw;
+}
+
+
+.open .open-inner .open-search .search-form input {
+    width: 86%;
+    border-radius: 4px;
+    border: solid 0.5px rgb(129, 129, 129);
+    background-color: rgba(255, 255, 255, 0.11);
+    padding-top: 0.5rem;
+    height: 5.5rem;
+    position: relative;
+    bottom: 2.5vw;
+    top: -0.5vw;
+    padding-left: 9rem;
+    font-size: 2.5rem;
+}
+
+.open .open-inner .open-search input::placeholder{
+    position: relative;
+    top: 0vw;
+    left:-1rem;
+    opacity: 0.8;
+    text-align: center;
+    font-family:var(--Light);
+    font-size: 3.2rem;
+}
+
+.open .open-inner .open-search .search-button {
+    background-image: url(../img/search-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 2.5vw 2.2vw;
+    border: none;
+    height: 2.5vw;
+    width: 3.2vw;
+    position: relative;
+    top: 0.15vw;
+    left: 3.8vw;
+    z-index: 5;
+    margin-right: 0rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/* Search Options */
+    
+#search_options{
+    width: 95%;
+    display: none;
+    position: absolute;
+    top: 8.5rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    height: 22rem;
+    overflow: hidden;
+    padding: 0;
+}
+
+#search_options .search_list{
+    width: 100% !important;
+    padding-top: 1.5rem;
+    
+    cursor: pointer;
+    padding-left: 4rem;
+}
+
+#search_options .search_list:hover{
+    background-color: #979797;
+}
+
+#search_options .search_list h2{
+    opacity: 0.5;
+    font-family: var(--Thin);
+    font-size: 1.5rem;
+    letter-spacing: 1.07px;
+}
+
+#search_options .search_list p{
+    font-family: var(--Thin);
+    font-size: 1.5rem;
+    letter-spacing: 1.07px;
+}
+/* ///////// */
+
+
+
+.grid3{
+    display: grid;
+    grid-template-columns: repeat(3,33.33%);
+    grid-gap:11px;
+}
+
+/* Popular Restaurants Section */
+
+.popularRestaurants{
+    margin-top: 14rem;
+    width: 100%;
+}
+
+.popularRestaurants h1{
+    margin-top: 0;
+    text-align: center;
+    font-family: var(--Thin);
+    font-size: 3rem;
+    letter-spacing: 1.25px;
+    font-weight: 100;
+}
+
+.popularRestaurants .the-restaurants{
+    margin-top: 4rem;
+    
+}
+
+.popularRestaurants .the-restaurants a{
+    color: black;
+    text-decoration: none;
+}
+
+.popularRestaurants .the-restaurants .restaurant{
+    width: 36rem;
+    height: 36rem;
+    background-color: var(--mask);
+}
+.popularRestaurants .the-restaurants .restaurant .resu-img{
+    width: 100%;
+    height: 22.4rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 4rem 6rem;
+}
+
+.popularRestaurants .the-restaurants .restaurant .resu-content{
+    text-align: center;
+}
+
+.popularRestaurants .the-restaurants .restaurant .resu-content .title{
+    font-size: 4rem;
+    font-family: var(--Medium);
+    letter-spacing: 2.67px;
+    margin: 0;
+    margin-top: 2.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.popularRestaurants .the-restaurants .restaurant .resu-content .chef{
+    font-size: 2.25rem;
+    font-family: var(--Thin);
+    letter-spacing: 1.67px;
+    margin: 0;
+    padding-bottom: 2.5rem;
+}
+.popularRestaurants .the-restaurants .all{
+    grid-column: 3;
+    font-family: var(--Medium);
+}
+.popularRestaurants .the-restaurants .all h3{
+    font-family: var(--Medium);
+    text-align: right;
+    font-size: 3rem;
+    align-items: center;
+    display: flex;
+    padding-left: 10rem;
+}
+
+.popularRestaurants .the-restaurants h3 .arrow-img{
+    width: 2.4rem;
+    height: 1.8rem;
+    position: relative;
+    top: 0.35rem;
+    left: 1.3rem;
+}
+/* /////////// */
+
+
+/* Popular Dishes */
+
+.popularDishes{
+    margin-top: 8.5rem;
+}
+
+.popularDishes h1{
+    margin-top: 0;
+    text-align: center;
+    font-family: var(--Thin);
+    font-size: 3rem;
+    letter-spacing: 1.25px;
+    font-weight: 100;
+}
+
+.popularDishes .the-dishes{
+
+}
+
+.popularDishes .the-dishes .PopDish{
+    text-align: center;
+    height: 79rem;
+    margin-bottom: 5rem;
+    margin-top: 4rem;
+    background-color: var(--mask);
+}
+
+.popularDishes .the-dishes .PopDish .dishRes{
+    background-color: white;
+    
+}
+.popularDishes .the-dishes .PopDish .dishRes h2{
+    margin: 0;
+    font-size: 3rem;
+    letter-spacing: 1.77px;
+    padding-top: 1rem;
+    padding-bottom: 2.3rem;
+    font-family: 'Helvetica';
+}
+
+.popularDishes .the-dishes .PopDish .dishImg{
+    width: 100%;
+    height: 29rem;
+}
+
+.popularDishes .the-dishes .PopDish .dish-content{
+
+}
+
+.popularDishes .the-dishes .PopDish .dish-content .title{
+     margin-top: 0;
+     padding-top: 1.6rem;
+     padding-bottom: 2rem;
+     padding-left: 7.9rem;
+     padding-right: 7.9rem;
+     font-size: 3.8rem;
+     font-family: var(--Medium);
+     line-height: 1.23;
+     letter-spacing: 2.56px;
+     height: 10rem;
+     margin-bottom: 2rem;
+}
+
+.popularDishes .the-dishes .PopDish .dish-content .desc{
+    font-family: var(--Thin);
+    padding: 0 3.6rem;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    letter-spacing: 1.6px;
+    height: 15rem;
+    margin-bottom: 2rem;
+}
+
+.popularDishes .the-dishes .PopDish .dish-content .dishIcon{
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    width: 3.5rem;
+    height: 3rem;
+}
+
+.popularDishes .the-dishes .PopDish .dish-content .dishPrice{
+    width: 75%; 
+    text-align: center; 
+    border-bottom: 1px solid #979797; 
+    line-height: 0.1em;
+    margin: 10px auto; 
+    font-family: var(--Thin);
+}
+
+.popularDishes .the-dishes .PopDish .dish-content .dishPrice span {
+    background: var(--mask);
+    padding: 0px 10px;
+    font-size: 24.9px;
+    letter-spacing: 1.66px;
+    
+    position: relative;
+    top:0.7rem;
+}
+.popularDishes .the-dishes .PopDish .dish-content .dishPrice span svg{
+    margin-right: 0.2rem;
+}
+
+.popularDishes .the-dishes  h3{
+    display: none;
+}
+
+/* ////////// */
+
+
+/* Our Icons */
+
+.ourIcons{
+    margin-top: 8rem;
+    padding-top: 4rem;
+    height: 26.5rem;
+    background-color: #fafafa;
+}
+
+.ourIcons h1{
+    margin-top: 0;
+    text-align: center;
+    font-family: var(--Thin);
+    font-size: 3rem;
+    letter-spacing: 1.25px;
+    font-weight: 100;
+}
+
+.ourIcons .theIcons {
+    padding-right: 4rem;
+    max-width: 45rem !important ;
+    display: grid;
+    grid-template-columns: 30% 50% 28%;
+    grid-gap: 10px;
+    text-align: center;
+    position: relative;
+    right: 4rem;
+    top: 3rem;
+}
+
+
+.ourIcons .theIcons .iconIt:nth-child(1) img{
+    width: 8rem;
+    height: 6rem;
+}
+.ourIcons .theIcons .iconIt img{
+    width: 6rem;
+    height: 6rem;
+}
+
+.ourIcons .theIcons .iconIt p{
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: var(--Thin);
+    font-weight: 100;
+    letter-spacing: 1.94px;
+}
+
+
+/* ////////// */
+
+/* Chef Of The Week */
+
+.chefOfWeek{
+    margin: 0 auto;
+    max-width: 100rem;
+}
+
+.chefOfWeek h1{
+    margin-top: 10rem;
+    text-align: center;
+    font-family: var(--Thin);
+    font-size: 3rem;
+    letter-spacing: 1.25px;
+    font-weight: 100;
+    margin-bottom: 3.8rem;
+}
+
+
+.chefOfWeek .theChef{
+    display: grid;
+    grid-template-columns: 43rem 54rem;
+    grid-gap:70px;
+    
+    margin-top: 4.2rem;
+   
+    
+    
+}
+
+.chefOfWeek .theChef .chefImg{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    width:100%;
+    height: 34rem;
+    position: relative;
+}
+
+.chefOfWeek .theChef .chefImg .name{
+    height: 7.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 4rem;
+    letter-spacing: 1.43px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.chefOfWeek .theChef .chefImg .name p {
+    padding-top: 1.7rem;
+    margin: 0;
+}
+
+.chefOfWeek .theChef .chefContent{
+    font-size: 2.5rem;
+    font-family: var(--Thin);
+    font-weight: 100;
+    line-height: 1.3;
+    letter-spacing: 1.08px;
+}
+
+
+.chefOfWeek .chefRestaurants{
+    text-align: left;
+}
+
+.chefOfWeek .chefRestaurants .chef-title{
+    font-size: 3rem;
+    line-height: 1;
+    letter-spacing: 1.29px;
+    font-family: var(--Thin);
+    margin-top: 7rem;
+}
+
+.chefOfWeek .chefRestaurants .the-Restaurants{
+    margin-top: 2.1rem;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    grid-gap: 0px;
+}
+.chefOfWeek .chefRestaurants .the-Restaurants a{
+    text-decoration: none;
+    color: black;
+}
+.chefOfWeek .chefRestaurants .the-Restaurants .rest{
+    background-color: var(--mask);
+    width: 23.1rem;
+    height: 35rem;
+}
+
+.chefOfWeek .chefRestaurants .the-Restaurants .rest .res-img{
+    width: 100%;
+    height: 22.4rem;
+}
+
+.chefOfWeek .chefRestaurants .the-Restaurants .rest .res-title{
+    text-align: center;
+    font-size: 2.9rem;
+    letter-spacing: 2px;
+    margin-top: 1.9rem;
+}
+
+
+
+/* ///////////// */
+
+/* About */
+.About{
+    
+    margin-top: 11rem;
+    opacity: 0.9;
+    background-color: #fafafa;
+  
+}
+
+.About .innerAbout{
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.About .innerAbout .aboutUs{
+    display: flex;
+}
+
+.About .innerAbout .aboutUs .aboutContent{
+    width: 50%;
+    text-align: left;
+}
+
+.About .innerAbout .aboutUs .aboutContent h1{
+    margin-top: 6.5rem;
+    font-size: 2.8rem;
+    font-family: var(--Thin);
+}
+
+.About .innerAbout .aboutUs .aboutContent p{
+    font-size: 2rem;
+    letter-spacing: 1.69px;
+    font-family: var(--Thin);
+    margin-bottom: 2rem;
+}
+
+
+
+.About .innerAbout .aboutUs .aboutImg img{
+    width: 17rem;
+    height: 16rem;
+    position: relative;
+    top: 12rem;
+    left: 31rem;
+}
+
+
+.About .innerAbout .appStore{
+    display: flex;
+    padding-bottom: 2rem;
+}
+
+.About .innerAbout .appStore .apple:nth-child(2){
+    margin-left: 2rem;
+}
+
+
+.About .innerAbout .appStore .apple {
+    display: flex;
+    width: 18.4rem;
+    height: 5.3rem;
+    border-radius: 9.6px;
+    padding: 0.3rem 2rem;
+    border: solid 0.6px var(--black);
+}
+
+
+.About .innerAbout .appStore .apple svg {
+    width: 23.1px;
+    height: 29.6px;
+    position: relative;
+    top: 0.5rem;
+}
+.About .innerAbout .appStore .apple p{
+    margin: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 12rem;
+    position: relative;
+    top: 0.5rem;
+    left: 0.3rem;
+}
+
+
+.About .innerAbout .appStore .apple:nth-child(2) svg{
+    width: 19px;
+    height: 25px;
+    position: relative;
+    top: 1rem;
+    left: 0.3rem;
+}
+
+
+/* ///////////////////////// */
+
+@media(max-width:768px){
+    /* Open Section */
+    .open{
+        height: 25rem;
+        background-position: 0rem 0rem;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-attachment: inherit;
+        position: relative;
+    }
+
+
+    .open .open-inner {
+        padding: 0.5rem 0rem;
+        width: 90%;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.88);
+        position: relative;
+        top: 6rem;
+        height: 33vw;
+    }
+
+    .open .open-inner .open-text {
+        text-align: center;
+        padding: 0rem 9vw;
+        font-size: 5vw;
+        font-family: var(--Thin);
+        margin-bottom: 3vw;
+        margin-top: 1.5rem;
+        position: relative;
+        left: 0;
+        letter-spacing: 1px;
+    }
+
+
+    .open .open-inner .open-search {
+        position: relative;
+        left: 0;
+    }
+
+    .open .open-inner .open-search .search-form {
+        position: relative;
+        text-align: center;
+        display: flex;
+        left: 3.2vw;
+        
+    }
+
+    .open .open-inner .open-search .search-button {
+        background-image: url(../img/search-icon.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 1.8rem 1.8rem;
+        border: none;
+        height: 1.8rem ;
+        width: 1.8rem;
+        position: relative;
+        top: 0.8vw;
+        left: 6.4vw;
+        margin-right: 0rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .open .open-inner .open-search .search-form input {
+        width: 80%;
+        border-radius: 4px;
+        border: solid 0.5px rgb(129, 129, 129);
+        background-color: rgba(255, 255, 255, 0.11);
+        padding-top: 0rem;
+        height: 7vw;
+        padding-left: 7vw;
+    }
+
+    .open .open-inner .open-search input::placeholder{
+        position: relative;
+        top: -1.2vw;
+        left: -1vw;
+        opacity: 0.64;
+        padding-left: 0rem;
+        text-align: center;
+        font-size: 4vw;
+    }
+
+
+    /* Search Responsive */
+
+    #search_options {
+        width: 93%;
+        margin-left: 3vw;
+        display: none;
+        position: absolute;
+        top: 2.5rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        background-color: var(--white);
+        height: 15rem;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    /* ///////////// */
+
+    .owl-carousel .owl-stage-outer {
+        position: relative;
+        margin-left: -30vw;
+    }
+    
+    /* Popular Restaurants */
+    .popularRestaurants {
+        margin-top: 5rem;
+        width: 100%;
+    }
+    .popularDishes{
+        margin-top: 5rem;
+    }
+
+    .popularRestaurants h1{
+        font-size: 4vw;
+    }
+    .popularRestaurants .the-restaurants .all{
+        display: none;
+    }
+    .popularRestaurants .the-restaurants h3{
+        
+    }
+
+    .popularRestaurants .the-restaurants .restaurant{
+        width: 57vw;
+        height: 33rem;
+        background-color: var(--mask);
+    }
+
+    .popularRestaurants .the-restaurants .restaurant .resu-content .title{
+        font-size: 7vw;
+        letter-spacing: 1.67px;
+    }
+
+    .popularRestaurants .the-restaurants .restaurant .resu-content .chef{
+        font-size: 5vw;
+        letter-spacing: 1.33px;
+    }
+   
+
+    /* Popular Dishes */
+    
+    .popularDishes h1{
+        font-size: 4vw;
+    }
+
+    .popularDishes .the-dishes .PopDish{
+        text-align: center;
+        width: 57vw;
+        height: 60rem;
+        margin-bottom: 5rem;
+        background-color: var(--mask);
+    }
+    
+    .popularDishes .the-dishes .PopDish .dishRes h2{
+        font-size: 4.5vw;
+        letter-spacing: 0.94px;
+    }
+    
+    .popularDishes .the-dishes .PopDish .dishImg {
+        width: 100%;
+        height: 20.8rem;
+    }
+
+
+    .popularDishes .the-dishes .PopDish .dish-content .title{
+        margin-top: 0;
+        height: 20vw;
+        padding-top: 1.5rem;
+        padding-bottom: 0.8rem;
+        padding-left: 2.6rem;
+        padding-right: 2.6rem;
+        font-size: 6vw;
+        line-height: 1.23;
+        letter-spacing: 1.84px;
+   }
+
+   .popularDishes .the-dishes .PopDish .dish-content .desc {
+        padding: 0 2rem;
+        font-size: 4.5vw;
+        height: 25vw;
+        line-height: 1.2;
+        letter-spacing: 1.15px;
+    }
+    .popularDishes .the-dishes  h3{
+        display: none;
+    }
+
+    /* ////////// */
+
+    /* Our Icons */
+
+    .ourIcons{
+        margin-top: 5rem;
+        padding-top: 1.6rem;
+        padding-left: 0vw;
+        height: 30vw;
+        background-color: #fafafa;
+    }
+
+    .ourIcons h1{
+        font-size: 4vw;
+        letter-spacing: 1px;
+        margin-bottom: -1rem;
+    }
+
+    .ourIcons .theIcons{
+        padding-right: 1rem;
+        max-width: 60vw !important;
+        display: grid;
+        grid-template-columns: repeat(3,33.33%);
+        grid-gap: 10px;
+        text-align: center;
+        position: relative;
+        right: 5.5vw;
+    }
+    .ourIcons .theIcons .iconIt:nth-child(1) img{
+        width: 10vw;
+        height: 8vw;
+    }
+    .ourIcons .theIcons .iconIt img{
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .ourIcons .theIcons .iconIt p{
+        font-size: 4vw;
+    }
+
+    /* ////////// */
+
+    /* Chef Of The Week */
+
+    .chefOfWeek{
+        max-width: 90vw;
+        margin: 0 auto;
+    }
+
+    .chefOfWeek h1{
+        font-size: 4vw;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+    }
+
+
+    .chefOfWeek .theChef{
+        display: block;
+        margin-top: 4.2rem;    
+    }
+
+    .chefOfWeek .theChef .chefImg{
+        background-repeat: no-repeat;
+        background-position: 0rem -1rem;
+        background-size: 100% 110%;
+        width: 100%;
+        height: 70vw;
+        position: relative;
+        margin-bottom: 4vw;
+    }
+
+    .chefOfWeek .theChef .chefImg .name{
+        height: 15vw;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 7vw;
+        letter-spacing: 1.43px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .chefOfWeek .theChef .chefImg .name p {
+        padding-top: 1.7rem;
+        margin: 0;
+    }
+
+    .chefOfWeek .theChef .chefContent{
+        margin-top: 7vw;
+        font-size: 4.2vw;
+        font-family: var(--Thin);
+        line-height: 1.5;
+        letter-spacing: 1.04px;
+        text-align: center;
+    }
+
+
+    .chefOfWeek .chefRestaurants{
+        text-align: left;
+    }
+
+    .chefOfWeek .chefRestaurants .chef-title{
+        font-size: 4.2vw;
+        line-height: 1;
+        letter-spacing: 1.29px;
+        font-family: var(--Thin);
+        margin-top: 13vw;
+    }
+
+    .chefOfWeek .chefRestaurants .the-Restaurants{
+        margin-top: 4vw;
+        display: block;
+        font-family: var(--Medium);
+        
+    }
+
+    .chefOfWeek .chefRestaurants .the-Restaurants .rest{
+        background-color: var(--mask);
+        width: 55.8vw;
+        height: 31.5rem;
+        margin-bottom: 5rem;
+    }
+
+    .chefOfWeek .chefRestaurants .the-Restaurants .rest .res-img{
+        width: 100%;
+        height: 22.4rem;
+    }
+
+    .chefOfWeek .chefRestaurants .the-Restaurants .rest .res-title{
+        text-align: center;
+        font-size: 6.5vw;
+        letter-spacing: 2px;
+        margin-top: 1.9rem;
+    }
+    /* ///////////// */
+
+    /* About */
+    .About{
+        margin-top: 9rem;
+        padding-bottom: 8rem;
+    }
+
+    .About .innerAbout{
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+
+    .About .innerAbout .aboutUs{
+        display: block;
+        margin-bottom: 8vw;
+    }
+
+    .About .innerAbout .aboutUs .aboutContent{
+        width: 100%;
+        text-align: center;
+        padding-top: 2vw;
+    }
+
+    .About .innerAbout .aboutUs .aboutContent h1{
+        margin-top: 12.5vw;
+        font-size: 5vw;
+        font-family: var(--Thin);
+    }
+
+    .About .innerAbout .aboutUs .aboutContent p{
+        margin-top: 1vw;
+        font-size: 4.5vw;
+        line-height: 1.5;
+        padding: 0 2.5vw;
+        letter-spacing: 1.69px;
+        font-family: var(--Thin);
+    }
+    .About .innerAbout .aboutUs .aboutImg{
+        text-align: center;
+    }
+
+    .About .innerAbout .aboutUs .aboutImg img{
+        width: 13.7rem;
+        height: 12.8rem;
+        position: relative;
+        margin-top: 3.2vw;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+
+
+    .About .innerAbout .appStore {
+        display: flex;
+        width: 91vw;
+        margin: 0 auto;
+    }
+
+    .About .innerAbout .appStore .apple:nth-child(2){
+        margin-left: 2rem;
+    }
+    .About .innerAbout .appStore .apple{
+        display: flex;
+        width: 15.7rem;
+        height: 4.2rem;
+        border-radius: 6.7px;
+        padding: 0.5rem 2rem;
+        border: solid 0.6px var(--black);
+    }
+
+    .About .innerAbout .appStore .apple svg {
+        width: 17px;
+        position: relative;
+        top: 1.5vw;
+        right: 1vw;
+        height: 22px;
+    }
+
+    .About .innerAbout .appStore .apple p {
+        margin: 0;
+        text-align: center;
+        font-size: 3.3vw;
+        width: 27vw;
+        position: relative;
+        top: -0.2rem;
+        left: 0.3rem;
+    }
+
+
+    .About .innerAbout .appStore .apple:nth-child(2) svg{
+        width: 19px;
+        height: 25px;
+        position: relative;
+        top: 0.3rem;
+        left: 0.3rem;
+    }
+}
