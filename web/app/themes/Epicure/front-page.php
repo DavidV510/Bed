@@ -47,6 +47,18 @@
     </div>
 </section>
 
+
+<section class="Mobile-Buttons">
+        <div class="Mobile-Buttons-Inner">
+           <div class="chef-button">
+             <p>chefs</p>
+           </div>
+           <div class="res-button">
+             <p>restaurants</p>
+           </div>
+        </div>
+</section>
+
 <section class="popularRestaurants">
     <h1>THE POPULAR RESTAURANTS IN EPICURE :</h1>
     <div class="grid3 the-restaurants container owl-carousel">

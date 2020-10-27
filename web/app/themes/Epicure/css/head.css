@@ -345,7 +345,7 @@
         top: 0;
         height: 100vh;
         background-color: white;
-        z-index: 5;
+        z-index: 6;
     }
     .headContainer .mobile .hiddenMenu .close{
         margin-top: 1.2rem;
