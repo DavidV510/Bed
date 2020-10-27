@@ -1,3 +1,3 @@
 # Epicure-Bedrock
 
-### Epicure Project wrapped with Bedrock Whoa
+### Epicure Project wrapped with Bedrock aasw
