@@ -17,18 +17,29 @@
      wp_enqueue_style('restaurant',get_template_directory_uri().'/css/restaurant.css',NULL,'1.0.0.6.4');
      wp_enqueue_style('cart',get_template_directory_uri().'/css/cart.css',NULL,'1.0.0.6.4');
      wp_enqueue_style('search_Cart_Modal',get_template_directory_uri().'/css/search_dish_modal.css',NULL,'1.0.0.6.4');
+     wp_enqueue_style('users',get_template_directory_uri().'/css/users.css',NULL,'1.0.0.6.4');
 
-     wp_enqueue_style('style',get_stylesheet_uri(),array('head','foot','front','category','restaurant','cart','search_Cart_Modal'),'1.0.0.6.4');
+     wp_enqueue_style('style',get_stylesheet_uri(),array('head','foot','front','category','restaurant','cart','search_Cart_Modal','users'),'1.0.0.6.4');
 
      wp_enqueue_script('jquery');
      wp_enqueue_script('script', get_template_directory_uri().'/js/script.js',array('jquery'), '1.0.0.3.0',true);
+     wp_enqueue_script('user',get_template_directory_uri().'/js/user.js',array('jquery'), '1.0.0.3.0',true);
      wp_localize_script(
           'script',
           'admin_ajax',
           array(
               'ajaxurl'=>admin_url('admin-ajax.php'),
+              'siteurl'=>trim(str_replace('wp','',site_url()))
           )
       );
+      wp_localize_script(
+        'user',
+        'admin_ajax',
+        array(
+            'ajaxurl'=>admin_url('admin-ajax.php'),
+            'siteurl'=>trim(str_replace('wp','',site_url()))
+        )
+    );
   }
 
   add_action('wp_enqueue_scripts','epicure_scripts');
@@ -63,6 +74,7 @@
         'admin_ajax',
         array(
             'ajaxurl'=>admin_url('admin-ajax.php'),
+            
         )
     );
   }
@@ -83,5 +95,15 @@
  
 // Add the simple_role.
 add_action( 'init', 'wporg_simple_role' );
+
+
+// Start session
+function start_session(){
+  if(!session_id()){
+    session_start();
+  }
+}
+
+add_action('init','start_session',1);
 
 ?>

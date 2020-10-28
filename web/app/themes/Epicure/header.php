@@ -80,9 +80,31 @@
                     
                 </ul>
                 </div>
+               <?php 
+                 if(isset($_SESSION['userName'])){
+                     $userName=$_SESSION['userName']; ?>
+
+                 <div class="userConected">
+                    <p> Welcome: <?php echo $userName; ?></p>
+                    <div class="Logout">
+                      <button onclick="logout()">Log Out</button>
+                    </div>
+                 </div>
+
+                 <div class="bagUser">
+                    <?php $url=get_page_by_title('Cart'); ?>
+                    <a href="<?php echo get_permalink($url) ?>">
+                    <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                    </a>
+                </div>
+
+                <?php  }else{ ?>
 
                 <div class="user">
+                <?php $url=get_page_by_title('login'); ?>
+                <a href="<?php echo get_permalink($url) ?>">
                 <img class="user-img" src="<?php echo get_template_directory_uri()."/img/user.png" ?>">
+                </a>
                 </div>
 
                 <div class="bag">
@@ -91,6 +113,11 @@
                     <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                     </a>
                 </div>
+
+                <?php } ?>
+
+                
+             
             </div>
         </div>
 

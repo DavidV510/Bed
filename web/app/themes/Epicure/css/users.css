@@ -1,0 +1,152 @@
+/* 
+    Theme Name:Epicure 
+    Theme URI:
+    Author:David Vinter
+    Author URI:
+    Description: My Theme for Restaurant Website  
+    Version:1.0
+    License:GNU General Public License v2 or later
+    License URI: http://wwww.gnu.org/licenses/gpl-2.0.html
+    Tags:Css Grid, Flexbox, Responsive, Bootstrap, Javascript
+
+*/
+
+
+/* Users */
+
+.users{
+    text-align: center;
+    font-family: var(--Thin);
+}
+
+.users .img{
+    width: 5.4vw;
+    height: 5vw;
+    margin: 3rem auto;
+}
+
+.users h1{
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 3rem;
+}
+
+.users .users-btn{
+    border-radius: 2.1px;
+    border: none;
+    color: white;
+    font-size: 1.89rem;
+    font-family: var(--Thin);
+    background-color: #000 ;
+    letter-spacing: 1.08px;
+    text-align: center;
+    padding: 1.7rem 3.1rem;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    margin-left: 21rem;
+
+}
+
+.users .users-btn:hover{
+    background-color: rgba(222, 146, 0, 0.9) ;
+    color: #000;
+}
+
+.users .Login{
+    text-align: left;
+    margin: 0 auto;
+    width: 50%;
+    padding-bottom: 5rem;
+    border-bottom: solid 0.5px rgb(195 189 189);
+}
+
+.users form{
+    font-size: 2.5rem;
+}
+
+.users form input{
+    width: 100%;
+    border: solid 0.5px rgb(195 189 189);
+    border-radius: 7px;
+    height: 5rem;
+}
+
+.users form input::placeholder{
+    padding-left: 1rem;
+}
+
+.users .SignUp{
+    text-align: left;
+    margin: 0 auto;
+    width: 50%;
+}
+
+@media(max-width:768px){
+    .users{
+        text-align: center;
+        font-family: var(--Thin);
+    }
+    
+    .users .img{
+        width: 21.4vw;
+        height: 20vw;
+        margin: 3rem auto;
+    }
+    
+    .users h1{
+        text-align: center;
+        margin: 3rem 0;
+        font-size: 3rem;
+    }
+    
+    .users .users-btn{
+        border-radius: 2.1px;
+        border: none;
+        color: white;
+        font-size: 1.89rem;
+        font-family: var(--Thin);
+        background-color: #000 ;
+        letter-spacing: 1.08px;
+        text-align: center;
+        padding: 1.7rem 3.1rem;
+        cursor: pointer;
+        transition: 0.3s all ease;
+        margin-left: 0rem;
+        width: 100%;
+    
+    }
+    
+    .users .users-btn:hover{
+        background-color: rgba(222, 146, 0, 0.9) ;
+        color: #000;
+    }
+    
+    .users .Login{
+        text-align: left;
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 5rem;
+        border-bottom: solid 0.5px rgb(195 189 189);
+    }
+    
+    .users form{
+        font-size: 2.5rem;
+    }
+    
+    .users form input{
+        width: 100%;
+        border: solid 0.5px rgb(195 189 189);
+        border-radius: 7px;
+        height: 5rem;
+    }
+    
+    .users form input::placeholder{
+        padding-left: 1rem;
+    }
+    
+    .users .SignUp{
+        text-align: left;
+        margin: 0 auto;
+        width: 100%;
+    }
+}

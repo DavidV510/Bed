@@ -109,17 +109,16 @@ var Local_CartDishes=[];
 var side=''
 var change=''
 function chooseSide(name , id){
-    console.log('Side name is ' + name)
-    
-    $(`.side .inside`).css('display','none')
-    $(`#${id} .inside`).css('display','block')
+    console.log('Side name is ' + name + id)
+    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .side .inside`).css('display','none')
+    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick #${id} .inside`).css('display','block')
     side=name
 }
 
 function chooseChange(name,id){
-    console.log('Change name is ' + name)
-    $(`.change .inside`).css('display','none')
-    $(`#${id} .inside`).css('display','block')
+    console.log('Change name is ' + name + id)
+    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick .change .inside`).css('display','none')
+    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick #${id} .inside`).css('display','block')
     change=name
 }
 
@@ -174,8 +173,11 @@ var TableDishes=JSON.parse(localStorage.getItem('CartDishes'))
 if(TableDishes){
     var total=0
     var tr=''
+    var id=0
     for(var i=0;i<TableDishes.length;i++){
-      tr+=`<tr id=${TableDishes[i].id}><td>`+TableDishes[i].title+`</td>`
+      id++
+      TableDishes[i].id=id
+      tr+=`<tr id=${id}><td>`+TableDishes[i].title+`</td>`
       tr+=`<td class="table-img"><img src='${TableDishes[i].img}'> </td>`
       tr+=`<td>${TableDishes[i].side}</td>`
       tr+=`<td>${TableDishes[i].change}</td>`
@@ -186,7 +188,7 @@ if(TableDishes){
           <path d="M13.544.48V12H8.291c-1.874.027-2.811-1.136-2.811-3.49V4.06"/>
       </g>
   </svg></td>`
-      tr+=`<td><button class="CartButton" onclick="removeDish('${TableDishes[i].id}')"> Remove </button></td></tr>`
+      tr+=`<td><button class="CartButton" onclick="removeDish('${id}')"> Remove </button></td></tr>`
       
      total+=TableDishes[i].total
     
@@ -212,6 +214,8 @@ function removeDish(id){
 
 
 
+// Ordering For Non Users
+
 if(document.querySelector('#form1')){
     
 document.querySelector("#form1").addEventListener('submit',function(e){
@@ -226,7 +230,6 @@ document.querySelector("#form1").addEventListener('submit',function(e){
     var JsonString=JSON.stringify(theOrder.ItemList)
     console.log(JsonString)
     console.log(JSON.parse(JsonString))
-    console
         $.ajax({
                     type:'POST',
                     data:{

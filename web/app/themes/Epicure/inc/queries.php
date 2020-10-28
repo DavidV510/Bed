@@ -7,7 +7,8 @@ function get_Dishes() {
           $timeDishes=get_field($time, $_POST['id']);
                 foreach($timeDishes as $dish):
                     $DishPrice=get_field('price',$dish->ID);
-                    $newId=$dish->ID + 1 .'a';
+                    $newId=$dish->ID.'a';
+                    echo $newId;
                 ?>
 
                 <li class='theDish'  data-toggle="modal" data-target="#<?php echo $newId ?>"> 
@@ -155,9 +156,15 @@ function get_Dishes() {
 
 
                                    <div class="modal-add-bag">
+                                        <?php if(isset($_SESSION['userId'])){ ?>
+                                        <button class="users" onclick="Add_To_Bag_User('<?php echo $newId; ?>','<?php echo $dish->ID; ?>')">
+                                            ADD TO BAG
+                                        </button>
+                                      <?php } else {?>
                                         <button onclick="addToBag('<?php echo $newId; ?>','<?php echo $dish->ID; ?>')">
                                             ADD TO BAG
                                         </button>
+                                      <?php } ?>
                                    </div>
 
                                 </div>
@@ -256,5 +263,215 @@ function get_Dishes() {
 
     add_action('wp_ajax_removeOrder','remove_order');
     add_action('wp_ajax_nopriv_removeOrder','remove_order');
+
+
+
+
+    // Create User
+
+    function create_userEpicure(){
+        global $wpdb;
+        if(isset($_POST['emailUser'])){
+            $name=sanitize_text_field($_POST['nameUser']);
+            $email=sanitize_text_field($_POST['emailUser']);
+            
+            $phone=sanitize_text_field($_POST['phoneUser']);
+            $password=$_POST['passwordUser'];
+            $password=password_hash($password,PASSWORD_DEFAULT);
+
+            $getEmail="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
+            $foundedEmail=$wpdb->get_results($getEmail);
+
+            if(count($foundedEmail)>0){
+                echo json_encode(array('res'=>'existes'));
+            } else{
+                $table = $wpdb->prefix. 'users_epicure';
+                $data=array(
+                    'name'=>$name,
+                    'email'=>$email,
+                    'phone'=>$phone,
+                    'password'=>$password,
+                    //'ItemList'=>'dwadwa'
+                );
+    
+                $format=array(
+                    '%s',
+                    '%s',
+                    '%s',
+                    '%s',
+                    '%s'
+                );
+    
+                $wpdb->insert($table,$data,$format);
+                $theUser="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
+                $getUser=$wpdb->get_results($theUser);
+                $_SESSION['userId']=$getUser[0]->id;
+                $_SESSION['userName']=$name;
+
+              echo json_encode(array('res'=>'added'));
+            }
+            
+        }
+    }
+
+
+    add_action('wp_ajax_createUser','create_userEpicure');
+    add_action('wp_ajax_nopriv_createUser','create_userEpicure');
+
+
+    // Log In User
+    function log_in(){
+        global $wpdb;
+        if(isset($_POST['emailLogUser'])){
+            $email= $_POST['emailLogUser'];
+            $password= $_POST['passLogUser'];
+
+            $findUser="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
+            $getFindUser=$wpdb->get_results($findUser);
+
+            if(count($getFindUser)>0){
+                $getFindUser=$getFindUser[0];
+
+                $passwordCheck=password_verify($password,$getFindUser->password);
+                if($passwordCheck){
+                    $_SESSION['userId']=$getFindUser->id;
+                    $_SESSION['userName']=$getFindUser->name;
+                    $_SESSION['userEmail']=$getFindUser->email;
+                    $_SESSION['userPhone']=$getFindUser->phone;
+                    echo json_encode(array('res'=>'loged'));
+                }
+                else{
+                    echo json_encode(array('res'=>'Not'));
+                }
+            }
+            else{
+                echo json_encode(array('res'=>'N_User'));
+            }
+        }
+    }
+
+    
+    add_action('wp_ajax_loginEpicure','log_in');
+    add_action('wp_ajax_nopriv_loginEpicure','log_in');
+
+
+
+    //Log Out User
+    function log_out(){
+        session_destroy();
+    }
+
+    add_action('wp_ajax_Logout','log_out');
+    add_action('wp_ajax_nopriv_Logout','log_out');
+
+
+
+    // Add To Bag & DB dish of User -> By current session
+
+    function add_To_Bag_User(){
+        global $wpdb;
+        if(isset($_POST['item_user'])){
+            $item=sanitize_text_field($_POST['item_user']);
+            $userId=$_SESSION['userId'];
+
+
+            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
+            $findUser=$wpdb->get_results($findUser);
+
+            $items_user=$findUser[0]->ItemList;
+            $items_new=$items_user.$item;
+            $wpdb->query($wpdb->prepare("UPDATE wp_users_epicure SET ItemList='$items_new' WHERE id= $userId "));
+
+            wp_die();
+            
+         }
+    }
+    add_action('wp_ajax_addToBagUser','add_To_Bag_User');
+    add_action('wp_ajax_nopriv_addToBagUser','add_To_Bag_User');
+
+
+
+    function Remove_User_Dish(){
+        global $wpdb;
+        if(isset($_POST['type'])){
+            $userId=$_SESSION['userId'];
+            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
+            $findUser=$wpdb->get_results($findUser);
+            $items=$findUser[0]->ItemList;;
+            
+            //Turn the session to JSON
+            $beforeJson_User=str_replace('}{','},{',$items);
+            $beforeJson_User=stripslashes($beforeJson_User);
+            $beforeJson_User='['.$beforeJson_User.']';
+            $new_item_list=json_decode($beforeJson_User);
+           
+
+            // Remove the Dish
+            $pos=array_search($_POST['id'],array_column($new_item_list,'id'));
+            unset($new_item_list[$pos]);
+
+            // Back to string
+            $new_item_list=json_encode(array_values($new_item_list));
+            $updateItems=str_replace('},{','}{',$new_item_list);
+            $updateItems=str_replace('[','',$updateItems); 
+            $updateItems=str_replace(']','',$updateItems);
+
+            
+            // Update the Items in DB
+            $wpdb->query($wpdb->prepare("UPDATE wp_users_epicure SET ItemList='$updateItems' WHERE id= $userId "));
+        
+        }
+    }
+    add_action('wp_ajax_RemoveUserDish','Remove_User_Dish');
+    add_action('wp_ajax_nopriv_RemoveUserDish','Remove_User_Dish');
+
+
+
+
+function send_ItemTo_Admin_User(){ 
+        global $wpdb;
+
+        if(isset($_POST['email'])){
+            $name=sanitize_text_field($_POST['name']);
+            $email=sanitize_text_field($_POST['email']);
+            $phone=sanitize_text_field($_POST['phone']);
+            $totalPrice=sanitize_text_field($_POST['totalPrice']);
+
+
+            $userId=$_SESSION['userId'];
+            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
+            $findUser=$wpdb->get_results($findUser);
+            $items_user=$findUser[0]->ItemList;
+            
+            $table = $wpdb->prefix. 'order_users';
+            $data=array(
+                'name'=>$name,
+                'email'=>$email,
+                'phone'=>$phone,
+                'date'=> date('Y-m-d H:i:s'),
+                'ItemList'=>$items_user,
+                'totalPrice'=>$totalPrice
+            );
+
+            $format=array(
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%s'
+            );
+
+            $wpdb->insert($table,$data,$format);
+            $wpdb->query("UPDATE wp_users_epicure SET ItemList='' WHERE id= $userId ");
+            wp_die();
+            
+            
+        }
+               
+    }
+    
+    
+    add_action('wp_ajax_sendItemToAdmin_User','send_ItemTo_Admin_User');
+    add_action('wp_ajax_nopriv_sendItemToAdmin_User','send_ItemTo_Admin_User');
 
 ?>

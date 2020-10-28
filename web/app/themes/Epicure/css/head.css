@@ -176,11 +176,53 @@
     width: 2.5rem;
     height: 2.2rem;
     margin-right: 2.8rem;
+    
 }
+
+
 .headContainer .cont .right .bag{
-    width: 2.5rem;
+    width: 2.4rem;
     height: 2.1rem;
 }
+
+.headContainer .cont .right .userConected{
+    width: 20rem;
+    height: 4rem;
+    display: flex;
+    margin-right: 2rem;
+    text-align: center;
+}
+.headContainer .cont .right .userConected p{
+    width: 50%;
+    font-size: 1.2rem;
+    font-family: var(--Thin);
+    text-align: left;
+}
+
+.headContainer .cont .right .userConected .Logout{
+    width: 50%;
+}
+
+.headContainer .cont .right .userConected .Logout button{
+    border-radius: 2.1px;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: var(--Thin);
+    background-color: #000;
+    letter-spacing: 1.08px;
+    text-align: center;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+
+.headContainer .cont .right .bagUser{
+    width: 2.9rem;
+    height: 2.12rem;
+}
+
 
 .headContainer .mobile{
     display: none;
