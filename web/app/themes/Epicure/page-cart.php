@@ -4,14 +4,14 @@
 if(isset($_SESSION['userId'])){ ?>
 
 <div class="cart-user">
-    <h1>
+    <h1 class="ml-2">
     The stuff for: <?php echo $_SESSION['userName'] ?>
     </h1>
     <table class="table Cart">
                     <thead>
                         <tr>
                             <th class="tHead">Title</th>
-                            <th class="tHead">Img</th>
+                            <th class="tHead timg">Img</th>
                             <th class="tHead">Side</th>
                             <th class="tHead">Changes</th>
                             <th class="tHead">Quantity</th>
@@ -37,9 +37,10 @@ if(isset($_SESSION['userId'])){ ?>
                      $theJson_User=json_decode($beforeJson_User);
 
                      // Vars to define Total Price and New ID for each item
+                     global $total;
                      $total=0;
                      $newId=0;
-
+                     
                      //Displaying the Items
                     foreach($theJson_User as $item){ 
                       $newId++;
@@ -61,7 +62,12 @@ if(isset($_SESSION['userId'])){ ?>
                             <?php  } ?>
                             <td><?php echo $item->quantity; ?> </td>
                                         
-                            <td><?php echo $item->total; ?> </td>
+                            <td><?php echo $item->total; ?> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13">
+                                <g fill="none" fill-rule="evenodd" stroke="#000" stroke-width=".639">
+                                    <path d="M1 12V.48h5.253C8.127.453 9.064 1.616 9.064 3.97v4.45"/>
+                                    <path d="M13.544.48V12H8.291c-1.874.027-2.811-1.136-2.811-3.49V4.06"/>
+                                </g>
+                            </svg></td>
                             <td><button class="CartButton" onclick="removeDish_User('<?php echo $newId; ?>')"> Remove </button></td>
                        
                    <?php 
@@ -86,16 +92,17 @@ if(isset($_SESSION['userId'])){ ?>
                     
                     </tbody>
     </table>
-
+      
+    <?php if(count($theJson_User)>0){?>
       <form id="form3" class="cart-form">
 
         <div class="form-Stuff">
-        <p>Total Price:  <span class="form-Price"> <?php echo $total; ?></span>  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13">
+        <p>Total Price:  <span class="form-Price-user"> <?php echo $total; ?></span>  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13">
           <g fill="none" fill-rule="evenodd" stroke="#000" stroke-width=".639">
               <path d="M1 12V.48h5.253C8.127.453 9.064 1.616 9.064 3.97v4.45"/>
               <path d="M13.544.48V12H8.291c-1.874.027-2.811-1.136-2.811-3.49V4.06"/>
           </g>
-      </svg></p>
+        </svg></p>
         </div>
 
         <div class="form-Stuff">
@@ -114,15 +121,17 @@ if(isset($_SESSION['userId'])){ ?>
         </div>
 
         <input type="submit" class="CartButton" value="Make Order" > 
-      </form>
+        </form>
+   <?php } ?>
+      
 </div>
 
-      <?php } else {?>
+      <?php } else { ?>
         <table class="table Cart">
                 <thead>
                     <tr>
                         <th class="tHead">Title</th>
-                        <th class="tHead">Img</th>
+                        <th class="tHead timg">Img</th>
                         <th class="tHead">Side</th>
                         <th class="tHead">Changes</th>
                         <th class="tHead">Quantity</th>

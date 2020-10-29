@@ -71,6 +71,7 @@ if(document.querySelector('#Login')){
             var rep=JSON.parse(response.replace('0',''))
             if(rep.res==='loged'){
                 window.location=admin_ajax.siteurl
+                window.localStorage.clear();
             }
             if(rep.res==='Not'){
                 $('.loged').text('Wrong Password').css('color','red')
@@ -139,13 +140,13 @@ function Add_To_Bag_User(id ,numID){
         },
         url:admin_ajax.ajaxurl,
         success:function(response){
-            var rep=$.trim(response)
-           rep=rep.replaceAll('}{','},{')
-           rep=JSON.parse(rep)
-           rep=rep.replaceAll(/\\/g,'');
-           var op=`[${rep}]`
-           var theJson=JSON.parse(op)
-           console.log(theJson)
+        //     var rep=$.trim(response)
+        //    rep=rep.replaceAll('}{','},{')
+        //    rep=JSON.parse(rep)
+        //    rep=rep.replaceAll(/\\/g,'');
+        //    var op=`[${rep}]`
+        //    var theJson=JSON.parse(op)
+        //    console.log(theJson)
           window.location='http://epicure.local/cart/'
            
         }
@@ -180,7 +181,7 @@ if(document.querySelector('#form3')){
             name:$( "input[name*='name']" ).val(),
             email:$( "input[name*='email']" ).val(),
             phone:$( "input[name*='phone']" ).val(),
-            total:Number($('.form-Price').text()),
+            total:Number($('.form-Price-user').text()),
         }
         
             $.ajax({
@@ -202,4 +203,4 @@ if(document.querySelector('#form3')){
                         }
                     })
       })
-    }
+}

@@ -92,10 +92,38 @@
                  </div>
 
                  <div class="bagUser">
+                 <?php
+                    global $wpdb;
+                    $userId=$_SESSION['userId'];
+
+
+                    //Get the user row from DB
+                    $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
+                    $findUser=$wpdb->get_results($findUser);
+                    $beforeJson_User=$findUser[0]->ItemList;
+
+                    // Turn to JSON
+                    $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
+                    $beforeJson_User='['.$beforeJson_User.']';
+                    $theJson_User=json_decode($beforeJson_User);
+                    
+                    if(count($theJson_User)>0){?>
+                    <span class="cartNum"> 
+                        <?php echo count($theJson_User); ?>
+                    </span>
                     <?php $url=get_page_by_title('Cart'); ?>
                     <a href="<?php echo get_permalink($url) ?>">
                     <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                     </a>
+
+                    <?php } else{ ?>
+                        <?php $url=get_page_by_title('Cart'); ?>
+                        <a href="<?php echo get_permalink($url) ?>">
+                        <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                         </a>
+                   <?php  } ?>
+                    
+                    
                 </div>
 
                 <?php  }else{ ?>
@@ -108,6 +136,9 @@
                 </div>
 
                 <div class="bag">
+                 <span class="cartNum"> 
+                    0
+                  </span>
                     <?php $url=get_page_by_title('Cart'); ?>
                     <a href="<?php echo get_permalink($url) ?>">
                     <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
@@ -138,20 +169,77 @@
 
                 <div class="icons">
 
-                        <div class="searchIcon">
-                          <img class="user-img" src="<?php echo get_template_directory_uri()."/img/search-icon.svg" ?>">
-                        </div>
+                        <?php 
+                 if(isset($_SESSION['userName'])){
+                     $userName=$_SESSION['userName']; ?>
 
-                        <div class="user">
-                            <img class="user-img" src="<?php echo get_template_directory_uri()."/img/user.png" ?>">
-                        </div>
+                <div class="searchIconUser">
+                    <img class="user-img" src="<?php echo get_template_directory_uri()."/img/search-icon.svg" ?>">
+                </div>
 
-                        <div class="bag">
+                 <div class="userConected">
+                      <button onclick="logout()">Log Out</button>
+                 </div>
+
+                 <div class="bagUser">
+                    <?php
+                        global $wpdb;
+                        $userId=$_SESSION['userId'];
+
+
+                        //Get the user row from DB
+                        $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
+                        $findUser=$wpdb->get_results($findUser);
+                        $beforeJson_User=$findUser[0]->ItemList;
+
+                        // Turn to JSON
+                        $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
+                        $beforeJson_User='['.$beforeJson_User.']';
+                        $theJson_User=json_decode($beforeJson_User);
+                        
+                        if(count($theJson_User)>0){?>
+                        <span class="cartNumUser"> 
+                            <?php echo count($theJson_User); ?>
+                        </span>
                         <?php $url=get_page_by_title('Cart'); ?>
                         <a href="<?php echo get_permalink($url) ?>">
-                            <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                        <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                         </a>
-                        </div>
+
+                        <?php } else{ ?>
+                            <?php $url=get_page_by_title('Cart'); ?>
+                            <a href="<?php echo get_permalink($url) ?>">
+                            <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                            </a>
+                    <?php  } ?>
+                        
+                        
+                    </div>
+
+                    <?php  }else{ ?>
+
+                    <div class="searchIcon">
+                        <img class="user-img" src="<?php echo get_template_directory_uri()."/img/search-icon.svg" ?>">
+                    </div>
+
+                    <div class="user">
+                    <?php $url=get_page_by_title('login'); ?>
+                    <a href="<?php echo get_permalink($url) ?>">
+                    <img class="user-img" src="<?php echo get_template_directory_uri()."/img/user.png" ?>">
+                    </a>
+                    </div>
+
+                    <div class="bag">
+                    <span class="cartNum"> 
+                        0
+                    </span>
+                        <?php $url=get_page_by_title('Cart'); ?>
+                        <a href="<?php echo get_permalink($url) ?>">
+                        <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                        </a>
+                    </div>
+
+                    <?php } ?>
                 </div>
 
            </div>
@@ -165,7 +253,15 @@
                 </div>
 
                 <div class="secondMenu">
-                   <?php wp_nav_menu(array('theme_location'=>'mobile2-menu')); ?>
+                   <?php 
+                   if(isset($_SESSION['userId'])){?>
+                    <div class="second-logout" onclick="logout()">Log out</div>
+                  <?php 
+                    wp_nav_menu(array('theme_location'=>'mobile3-menu'));
+                   }else{?>
+                  <?php 
+                  wp_nav_menu(array('theme_location'=>'mobile2-menu'));
+                  } ?>
                 </div>
            </div>
 

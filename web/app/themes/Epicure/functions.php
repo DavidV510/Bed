@@ -56,6 +56,7 @@
       'main-menu'=>'Main Menu',
       'mobile1-menu'=>'Mobile1 Menu',
       'mobile2-menu'=>'Mobile2 Menu',
+      'mobile3-menu'=>'Mobile3 Menu',
       'footer-menu'=>'Footer Menu',
       'cate-menu'=>'cate menu'
     ));

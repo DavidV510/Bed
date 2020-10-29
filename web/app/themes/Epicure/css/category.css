@@ -82,7 +82,7 @@
 @media(max-width:768px){
     #menu-cate-menu {
         display: grid;
-        grid-template-columns: 15% 15% 40% 30%;
+        grid-template-columns: 15% 35% 20% 30%;
         max-width: 92vw;
         text-align: center;
         margin: 0 auto;
@@ -90,6 +90,10 @@
         position: relative;
         left: 0;
         padding: 0;
+    }
+
+    #menu-cate-menu a{
+        font-size: 4vw;
     }
 
     .restaurants-Cate{

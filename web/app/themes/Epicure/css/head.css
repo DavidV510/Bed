@@ -183,6 +183,18 @@
 .headContainer .cont .right .bag{
     width: 2.4rem;
     height: 2.1rem;
+    position: relative;
+}
+.headContainer .cont .right .bag .cartNum{
+    position: absolute;
+    top: -0.6vw;
+    right: 0.5vw;
+    background-color: black;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-family: var(--Bold);
+    padding: 0.1rem 0.6rem;
 }
 
 .headContainer .cont .right .userConected{
@@ -221,8 +233,19 @@
 .headContainer .cont .right .bagUser{
     width: 2.9rem;
     height: 2.12rem;
+    position: relative;
 }
-
+.headContainer .cont .right .bagUser .cartNum{
+    position: absolute;
+    top: -0.6vw;
+    right: 0.5vw;
+    background-color: black;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-family: var(--Bold);
+    padding: 0.1rem 0.6rem;
+}
 
 .headContainer .mobile{
     display: none;
@@ -317,6 +340,13 @@
         grid-template-columns: repeat(3,33%);
     }
 
+    .headContainer .mobile .showMenu .icons .searchIcon{
+        position: relative;
+        right: 0vw;
+    }
+
+    
+
     .headContainer .mobile .showMenu .icons .searchIcon img{
         width: 2rem;
         height: 2rem;
@@ -332,7 +362,81 @@
         height: 2rem;
     }
 
+    .headContainer .mobile .showMenu .icons .bag .cartNum{
+        position: absolute;
+        top: 3.3vw;
+        right: 9.2vw;
+        background-color: black;
+        border-radius: 12px;
+        color: white;
+        font-size: 2.5vw;
+        font-family: var(--Bold);
+        padding: 0.4vw 1.6vw;
+    }
+
     /* /////// */
+
+    /* User Icons */
+    .headContainer .mobile .showMenu .icons .searchIconUser{
+        position: relative;
+        right: 2vw;
+    }
+    .headContainer .mobile .showMenu .icons .searchIconUser img{
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .headContainer .mobile .showMenu .icons .userConected{
+        width: 14vw;
+        height: 5vw;
+        display: flex;
+        margin-right: 0rem;
+        text-align: center;
+        position: relative;
+        right: 4.5vw;
+    }
+    .headContainer .mobile .showMenu .icons .userConected p{
+        width: 50%;
+        font-size: 1.2rem;
+        font-family: var(--Thin);
+        text-align: left;
+    }
+
+    
+    .headContainer .mobile .showMenu .icons .userConected  button{
+        border-radius: 2.1px;
+        border: none;
+        color: white;
+        font-size: 2.5vw;
+        font-family: var(--Thin);
+        background-color: #000;
+        letter-spacing: 1.08px;
+        text-align: center;
+        padding: 1vw 1vw 1vw 1vw;
+        width: 13vw;
+        cursor: pointer;
+        transition: 0.3s all ease;
+    }
+
+
+    .headContainer .mobile .showMenu .icons .bagUser{
+        width: 5.1vw;
+        height: 5.12vw;
+        position: relative;
+    }
+    .headContainer .mobile .showMenu .icons .bagUser .cartNumUser{
+        position: absolute;
+        top: -2.7vw;
+        right: 2.2vw;
+        background-color: black;
+        border-radius: 12px;
+        color: white;
+        font-size: 2.5vw;
+        font-family: var(--Bold);
+        padding: 0.4vw 1.6vw;
+    }
+
+
 
     /* Search */
     .headContainer .mobile .searchMobile{
@@ -432,6 +536,17 @@
         padding: 0;
         margin-top: 7rem;
         border-top: solid 0.2px var(--black);
+    }
+
+    .headContainer .mobile .hiddenMenu .second-logout{
+        margin-top: 4.8rem;
+        opacity: 0.3;
+        color: black;
+        text-decoration: none;
+        margin-left: 0;
+        font-size: 2rem;
+        font-family: var(--Medium);
+        margin-bottom: -2rem;
     }
 
     .headContainer .mobile .hiddenMenu .secondMenu ul li{

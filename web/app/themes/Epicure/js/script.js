@@ -203,13 +203,16 @@ $('table tbody').append(tr)
 function removeDish(id){
     var theDish=TableDishes.find(dish => dish.id===id)
     TableDishes.splice(TableDishes.indexOf(theDish),1);
+    window.location='http://epicure.local/cart/'
     localStorage.setItem('CartDishes',JSON.stringify(TableDishes));
+    
     $(`#${id}`).remove();
 
     var newTotal=Number($('.form-Price').text())-Number(theDish.total)
 
     $('.form-Price').text(newTotal)
-    console.log(theDish)
+    
+    
 }
 
 
@@ -243,6 +246,7 @@ document.querySelector("#form1").addEventListener('submit',function(e){
                     url:admin_ajax.ajaxurl,
                     success:function(response){
                         console.log('Successfully Sended DATA')
+                        window.localStorage.clear();
                         window.location='http://epicure.local/thanks-for-ordering/'
                     },
                     error:function(response){
@@ -380,4 +384,20 @@ function select_Search_Input_header(id){
     $(".headContainer .mobile .searchMobile .search-form input").val($(`#${id} p`).text())
     $('.headContainer .mobile .searchMobile #search_options_header').css('display','none');
     $(".headContainer .mobile .searchMobile .search-form .search-button").removeAttr("disabled");
+}
+
+
+// Display Cart Number
+if(TableDishes){
+    console.log("There is Cart " + TableDishes.length)
+    $('.headContainer .cont .right .bag .cartNum').css('display','block')
+    $('.headContainer .mobile .showMenu .icons .bag .cartNum').css('display','block')
+    $('.headContainer .cont .right .bag .cartNum').text(TableDishes.length)
+    $('.headContainer .mobile .showMenu .icons .bag .cartNum').text(TableDishes.length)
+    $('#form1').css('display','block')
+}
+if(TableDishes===null || TableDishes.length===0 ){
+    $('.headContainer .cont .right .bag .cartNum').css('display','none')
+    $('.headContainer .mobile .showMenu .icons .bag .cartNum').css('display','none')
+    $('#form1').css('display','none')
 }

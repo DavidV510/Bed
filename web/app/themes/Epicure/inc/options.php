@@ -131,7 +131,7 @@
 
                     foreach($orders as $res) { ?>
 
-                        <tr id="<?php echo $res['id']; ?>">
+                        <tr id="<?php echo $res['id'].'user'; ?>">
                             <td>
                             <?php echo $res['id']; ?>
                             </td>
@@ -189,7 +189,7 @@
 
 
                             <td>
-                            <a href="#" class="remove_res" onclick="remove(<?php echo $res['id']; ?>)">
+                            <a href="#" class="remove_res" onclick="remove_user_order(<?php echo $res['id']; ?>)">
                               Remove
                             </a>
                             </td>
@@ -286,11 +286,7 @@
 
                         
 
-                            <td>
-                            <a href="#" class="remove_res" onclick="remove(<?php echo $res['id']; ?>)">
-                              Remove
-                            </a>
-                            </td>
+                            
                         </tr>
                        
                   <?php  } ?>

@@ -8,10 +8,9 @@ function get_Dishes() {
                 foreach($timeDishes as $dish):
                     $DishPrice=get_field('price',$dish->ID);
                     $newId=$dish->ID.'a';
-                    echo $newId;
                 ?>
 
-                <li class='theDish'  data-toggle="modal" data-target="#<?php echo $newId ?>"> 
+                <li class='theDish'  data-toggle="modal" data-target="#<?php echo str_replace(0,'',$newId); ?>"> 
                     <div class="theDish-Img">
                       <?php echo get_the_post_thumbnail($dish->ID); ?>
                     </div>    
@@ -35,7 +34,7 @@ function get_Dishes() {
                     </div>
                </li>
 <!-- Modal -->
-<div class="modal fade" id="<?php echo $newId ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="<?php echo str_replace(0,'',$newId); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="innerModal">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">
@@ -156,12 +155,12 @@ function get_Dishes() {
 
 
                                    <div class="modal-add-bag">
-                                        <?php if(isset($_SESSION['userId'])){ ?>
-                                        <button class="users" onclick="Add_To_Bag_User('<?php echo $newId; ?>','<?php echo $dish->ID; ?>')">
+                                    <?php if(isset($_SESSION['userId'])){ ?>
+                                        <button class="users" onclick="Add_To_Bag_User('<?php echo str_replace(0,'',$newId); ?>','<?php echo $dish->ID; ?>')">
                                             ADD TO BAG
                                         </button>
                                       <?php } else {?>
-                                        <button onclick="addToBag('<?php echo $newId; ?>','<?php echo $dish->ID; ?>')">
+                                        <button onclick="addToBag('<?php echo str_replace(0,'',$newId); ?>','<?php echo $dish->ID; ?>')">
                                             ADD TO BAG
                                         </button>
                                       <?php } ?>
@@ -473,5 +472,35 @@ function send_ItemTo_Admin_User(){
     
     add_action('wp_ajax_sendItemToAdmin_User','send_ItemTo_Admin_User');
     add_action('wp_ajax_nopriv_sendItemToAdmin_User','send_ItemTo_Admin_User');
+
+
+
+
+    // Remove user order in Admin
+    function Remove_User_Order(){
+        global $wpdb;
+        if(isset($_POST['type'])){
+            global $wpdb;
+            $table=$wpdb->prefix.'order_users';
+            $id=$_POST['id'];
+
+            $result= $wpdb->delete($table, array('id'=>$id));
+
+            if($result==1){
+                $response=array(
+                    'response'=>'success',
+                );
+            }else{
+                $response=array(
+                    'response'=>'error'
+                );
+            }
+       
+            die(json_encode($response));
+
+        }
+    }
+    add_action('wp_ajax_RemoveUserOrder','Remove_User_Order');
+    add_action('wp_ajax_nopriv_RemoveUserOrder','Remove_User_Order');
 
 ?>

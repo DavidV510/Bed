@@ -84,13 +84,6 @@ ul{
     height: 30vw;
 }
 
-@media(max-width:768px){
-    .container {
-        max-width: 92.5vw;
-        margin: 0 auto;
-    }
-}
-
 
 .side{
     background-color: white;
@@ -130,3 +123,22 @@ ul{
     position: relative;
     top: -0.45vw
 }
+
+@media(max-width:768px){
+    .container {
+        max-width: 92.5vw;
+        margin: 0 auto;
+    }
+    .side{
+        padding: 0.55vw;
+    }
+    .change .inside{
+        display: none;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        top: -2.2vw
+    }
+}
+

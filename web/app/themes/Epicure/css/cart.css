@@ -66,3 +66,30 @@
     color: white;
 }
 
+@media (max-width:768px){
+    .Cart .tHead {
+        font-size: 1.2rem;
+    }
+
+    .Cart tr td{
+        font-size: 1.4rem;
+    }
+
+    .Cart .timg{
+        display: none;
+    }
+    .Cart .table-img{
+        display: none;
+    }
+    
+    .CartButton:nth-child(1) {
+        border: none;
+        color: black;
+        font-family: var(--Light);
+        font-size: 2.8vw;
+        padding: 1vw 2vw;
+        background-color: rgba(232, 196, 122, 0.8);
+        cursor: pointer;
+        transition: 0.3s ease all;
+    }
+}
