@@ -751,7 +751,10 @@ input:focus{
     .Mobile-Buttons .Mobile-Buttons-Inner .res-button p{
         margin: 0;
     }
-
+    .Mobile-Buttons .Mobile-Buttons-Inner .res-button a{
+        text-decoration: none;
+        color: black;
+    }
     /* /////////// */
 
 

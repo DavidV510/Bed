@@ -1,5 +1,23 @@
 var $=jQuery
+ 
 
+if($('.striped > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate')){
+    $('.striped > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate').css('display','none');
+}
+
+if($('[data-colname="Item List"]')){
+    var itemElements=$('[data-colname="Item List"]');
+    var wisper=$('.wisper')
+    for(var i=0;i<itemElements.length;i++){
+        itemElements[i].innerHTML=wisper[i].innerHTML
+    }
+    //$('[data-colname="Item List"]').append($('.wisper ').html())
+}
+
+$('#username').css('width','10rem');
+$('#name').css('width','8rem');
+$('#email').css('width','12rem');
+$('#phone').css('width','12rem');
 function remove(id){
     $.ajax({
         type:'POST',

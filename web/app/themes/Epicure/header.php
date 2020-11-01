@@ -81,47 +81,48 @@
                 </ul>
                 </div>
                <?php 
-                 if(isset($_SESSION['userName'])){
-                     $userName=$_SESSION['userName']; ?>
+          
+                 if(get_current_user_id()){
+                    $user_id=get_current_user_id();
+                    $meta = get_user_meta($user_id);
+
+                    //Get the User meta from the WP_Users
+                    $item_list = $meta['Item List'][0];
+                     
+                
+                    // Turn to JSON
+                    $beforeJson_User=stripslashes($item_list);
+                    $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
+                    $beforeJson_User='['.$beforeJson_User.']';
+                    $theJson_User=json_decode($beforeJson_User);
+                    $count= count($theJson_User);
+                    ?>
 
                  <div class="userConected">
-                    <p> Welcome: <?php echo $userName; ?></p>
+                    <p> Welcome: <?php echo wp_get_current_user()->data->user_login; ?></p>
                     <div class="Logout">
                       <button onclick="logout()">Log Out</button>
                     </div>
                  </div>
 
                  <div class="bagUser">
-                 <?php
-                    global $wpdb;
-                    $userId=$_SESSION['userId'];
-
-
-                    //Get the user row from DB
-                    $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-                    $findUser=$wpdb->get_results($findUser);
-                    $beforeJson_User=$findUser[0]->ItemList;
-
-                    // Turn to JSON
-                    $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
-                    $beforeJson_User='['.$beforeJson_User.']';
-                    $theJson_User=json_decode($beforeJson_User);
-                    
-                    if(count($theJson_User)>0){?>
+                 <?php  if($count>0){ ?>
+                    <!-- If there is items in cart -->
                     <span class="cartNum"> 
-                        <?php echo count($theJson_User); ?>
+                        <?php  echo $count; ?>
                     </span>
                     <?php $url=get_page_by_title('Cart'); ?>
                     <a href="<?php echo get_permalink($url) ?>">
                     <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                     </a>
-
+                     
+                    <!-- If no items in cart -->
                     <?php } else{ ?>
                         <?php $url=get_page_by_title('Cart'); ?>
                         <a href="<?php echo get_permalink($url) ?>">
                         <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                          </a>
-                   <?php  } ?>
+                   <?php   } ?>
                     
                     
                 </div>
@@ -145,7 +146,7 @@
                     </a>
                 </div>
 
-                <?php } ?>
+                <?php  } ?>
 
                 
              
@@ -170,8 +171,20 @@
                 <div class="icons">
 
                         <?php 
-                 if(isset($_SESSION['userName'])){
-                     $userName=$_SESSION['userName']; ?>
+                 if(get_current_user_id()){
+                    $user_id=get_current_user_id();
+                    $meta = get_user_meta($user_id);
+
+                    //Get the User meta from the WP_Users
+                    $item_list = $meta['Item List'][0];
+                     
+                
+                    // Turn to JSON
+                    $beforeJson_User=stripslashes($item_list);
+                    $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
+                    $beforeJson_User='['.$beforeJson_User.']';
+                    $theJson_User=json_decode($beforeJson_User);
+                    $count= count($theJson_User); ?>
 
                 <div class="searchIconUser">
                     <img class="user-img" src="<?php echo get_template_directory_uri()."/img/search-icon.svg" ?>">
@@ -180,38 +193,24 @@
                  <div class="userConected">
                       <button onclick="logout()">Log Out</button>
                  </div>
-
+                
                  <div class="bagUser">
-                    <?php
-                        global $wpdb;
-                        $userId=$_SESSION['userId'];
-
-
-                        //Get the user row from DB
-                        $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-                        $findUser=$wpdb->get_results($findUser);
-                        $beforeJson_User=$findUser[0]->ItemList;
-
-                        // Turn to JSON
-                        $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
-                        $beforeJson_User='['.$beforeJson_User.']';
-                        $theJson_User=json_decode($beforeJson_User);
-                        
-                        if(count($theJson_User)>0){?>
+                    <?php  if($count>0){ ?>
+                    <!-- If there is items in cart -->
                         <span class="cartNumUser"> 
-                            <?php echo count($theJson_User); ?>
+                            <?php  echo $count; ?>
                         </span>
-                        <?php $url=get_page_by_title('Cart'); ?>
-                        <a href="<?php echo get_permalink($url) ?>">
-                        <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
+                        <?php  $url=get_page_by_title('Cart'); ?>
+                        <a href="<?php   echo get_permalink($url) ?>">
+                        <img class="bag-img" src="<?php  echo get_template_directory_uri()."/img/bag.png" ?>">
                         </a>
 
-                        <?php } else{ ?>
+                        <?php  } else{ ?>
                             <?php $url=get_page_by_title('Cart'); ?>
                             <a href="<?php echo get_permalink($url) ?>">
                             <img class="bag-img" src="<?php echo get_template_directory_uri()."/img/bag.png" ?>">
                             </a>
-                    <?php  } ?>
+                    <?php   } ?>
                         
                         
                     </div>
@@ -254,7 +253,7 @@
 
                 <div class="secondMenu">
                    <?php 
-                   if(isset($_SESSION['userId'])){?>
+                   if(get_current_user_id()){?>
                     <div class="second-logout" onclick="logout()">Log out</div>
                   <?php 
                     wp_nav_menu(array('theme_location'=>'mobile3-menu'));

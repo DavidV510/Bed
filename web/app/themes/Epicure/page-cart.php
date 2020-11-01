@@ -1,11 +1,11 @@
 <?php get_header(); 
 
 
-if(isset($_SESSION['userId'])){ ?>
+if(get_current_user_id()){?>
 
 <div class="cart-user">
     <h1 class="ml-2">
-    The stuff for: <?php echo $_SESSION['userName'] ?>
+    The stuff for: <?php echo wp_get_current_user()->data->user_login ?>
     </h1>
     <table class="table Cart">
                     <thead>
@@ -22,16 +22,16 @@ if(isset($_SESSION['userId'])){ ?>
 
                     <tbody>
                     <?php 
-                    global $wpdb;
-                     $userId=$_SESSION['userId'];
+                    
+                     $user_id=get_current_user_id();
+                     $meta = get_user_meta($user_id);
 
-
-                     //Get the user row from DB
-                     $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-                     $findUser=$wpdb->get_results($findUser);
-                     $beforeJson_User=$findUser[0]->ItemList;
+                     //Get the User meta from the WP_Users
+                      $item_list = $meta['Item List'][0];
+                      
 
                      // Turn to JSON
+                     $beforeJson_User=stripslashes($item_list);
                      $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
                      $beforeJson_User='['.$beforeJson_User.']';
                      $theJson_User=json_decode($beforeJson_User);
@@ -75,18 +75,7 @@ if(isset($_SESSION['userId'])){ ?>
                     $total=$total+$item->total;
                     }
 
-                    //Updating the Items in DB
-                    //Back to string
                     
-                      $new_item_list=json_encode($theJson_User);
-                      $updateItems=str_replace('},{','}{',$new_item_list);
-                      $updateItems=str_replace('[','',$updateItems); 
-                      $updateItems=str_replace(']','',$updateItems);
-                      // $status='active';
-                      // $min_id=0;
-                      $wpdb->query("UPDATE wp_users_epicure SET ItemList='$updateItems' WHERE id= $userId ");
-        
-                  
                     ?>
                           
                     
@@ -107,17 +96,17 @@ if(isset($_SESSION['userId'])){ ?>
 
         <div class="form-Stuff">
         <label for="">Name</label>
-        <input type="text" name="name" value="<?php echo $_SESSION['userName']; ?>">
+        <input type="text" name="name" value="<?php echo wp_get_current_user()->data->user_login; ?>">
         </div>
 
         <div class="form-Stuff">
         <label for="">Email</label>
-        <input type="email" name="email" value="<?php echo $_SESSION['userEmail']; ?>">
+        <input type="email" name="email" value="<?php echo wp_get_current_user()->data->user_email; ?>">
         </div>
 
         <div class="form-Stuff">
         <label for="">Phone</label>
-        <input type="tel" name="phone" value="<?php echo $_SESSION['userPhone'];  ?>">
+        <input type="tel" name="phone" value="<?php echo $meta['phone'][0];  ?>">
         </div>
 
         <input type="submit" class="CartButton" value="Make Order" > 

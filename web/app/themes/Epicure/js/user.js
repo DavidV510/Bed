@@ -140,7 +140,7 @@ function Add_To_Bag_User(id ,numID){
         },
         url:admin_ajax.ajaxurl,
         success:function(response){
-        //     var rep=$.trim(response)
+            var rep=$.trim(response)
         //    rep=rep.replaceAll('}{','},{')
         //    rep=JSON.parse(rep)
         //    rep=rep.replaceAll(/\\/g,'');
@@ -148,7 +148,6 @@ function Add_To_Bag_User(id ,numID){
         //    var theJson=JSON.parse(op)
         //    console.log(theJson)
           window.location='http://epicure.local/cart/'
-           
         }
     })
 }

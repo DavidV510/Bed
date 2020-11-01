@@ -155,7 +155,7 @@ function get_Dishes() {
 
 
                                    <div class="modal-add-bag">
-                                    <?php if(isset($_SESSION['userId'])){ ?>
+                                    <?php    if(get_current_user_id()){ ?>
                                         <button class="users" onclick="Add_To_Bag_User('<?php echo str_replace(0,'',$newId); ?>','<?php echo $dish->ID; ?>')">
                                             ADD TO BAG
                                         </button>
@@ -276,39 +276,26 @@ function get_Dishes() {
             
             $phone=sanitize_text_field($_POST['phoneUser']);
             $password=$_POST['passwordUser'];
-            $password=password_hash($password,PASSWORD_DEFAULT);
-
-            $getEmail="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
-            $foundedEmail=$wpdb->get_results($getEmail);
-
-            if(count($foundedEmail)>0){
+            // $password=password_hash($password,PASSWORD_DEFAULT);
+            
+            // $user_login = wp_slash( $username );
+            // $user_email = wp_slash( $email );
+            // $user_pass  = $password;
+            // $userdata = compact( $name, $email , $password);
+            if(email_exists($email) || username_exists($name)){
                 echo json_encode(array('res'=>'existes'));
-            } else{
-                $table = $wpdb->prefix. 'users_epicure';
-                $data=array(
-                    'name'=>$name,
-                    'email'=>$email,
-                    'phone'=>$phone,
-                    'password'=>$password,
-                    //'ItemList'=>'dwadwa'
-                );
-    
-                $format=array(
-                    '%s',
-                    '%s',
-                    '%s',
-                    '%s',
-                    '%s'
-                );
-    
-                $wpdb->insert($table,$data,$format);
-                $theUser="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
-                $getUser=$wpdb->get_results($theUser);
-                $_SESSION['userId']=$getUser[0]->id;
-                $_SESSION['userName']=$name;
+            }else{
+                
+                wp_create_user($name,$password,$email);
+                $login_array=array();
+                $login_array['user_login']=$name;
+                $login_array['user_password']=$password;
 
-              echo json_encode(array('res'=>'added'));
+                wp_signon($login_array,true);
+                echo json_encode(array('res'=>'added'));
             }
+           
+       
             
         }
     }
@@ -322,34 +309,33 @@ function get_Dishes() {
     function log_in(){
         global $wpdb;
         if(isset($_POST['emailLogUser'])){
-            $email= $_POST['emailLogUser'];
-            $password= $_POST['passLogUser'];
+            $email=esc_sql($_POST['emailLogUser']);    
+            $password= esc_sql($_POST['passLogUser']);
+            $phone= esc_sql( $_POST['phoneUser'] );
+            if(email_exists($email)){
 
-            $findUser="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
-            $getFindUser=$wpdb->get_results($findUser);
-
-            if(count($getFindUser)>0){
-                $getFindUser=$getFindUser[0];
-
-                $passwordCheck=password_verify($password,$getFindUser->password);
-                if($passwordCheck){
-                    $_SESSION['userId']=$getFindUser->id;
-                    $_SESSION['userName']=$getFindUser->name;
-                    $_SESSION['userEmail']=$getFindUser->email;
-                    $_SESSION['userPhone']=$getFindUser->phone;
+                $dataUser=get_user_by('email',$email);
+                //Check if password muches
+                if(wp_check_password($password,$dataUser->user_pass)){
+                    $login_array=array();
+                    $login_array['user_login']=$dataUser->data->user_login;
+                    $login_array['user_password']=$password;
+                    $login_array['user_phone']=$phone;
+                    wp_signon($login_array,true);
                     echo json_encode(array('res'=>'loged'));
                 }
                 else{
                     echo json_encode(array('res'=>'Not'));
                 }
-            }
-            else{
+            }else{
                 echo json_encode(array('res'=>'N_User'));
             }
+            
+
         }
     }
 
-    
+
     add_action('wp_ajax_loginEpicure','log_in');
     add_action('wp_ajax_nopriv_loginEpicure','log_in');
 
@@ -357,7 +343,8 @@ function get_Dishes() {
 
     //Log Out User
     function log_out(){
-        session_destroy();
+        wp_logout();
+        wp_die();
     }
 
     add_action('wp_ajax_Logout','log_out');
@@ -370,19 +357,23 @@ function get_Dishes() {
     function add_To_Bag_User(){
         global $wpdb;
         if(isset($_POST['item_user'])){
-            $item=sanitize_text_field($_POST['item_user']);
-            $userId=$_SESSION['userId'];
-
-
-            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-            $findUser=$wpdb->get_results($findUser);
-
-            $items_user=$findUser[0]->ItemList;
-            $items_new=$items_user.$item;
-            $wpdb->query($wpdb->prepare("UPDATE wp_users_epicure SET ItemList='$items_new' WHERE id= $userId "));
-
+           
+           // $item=$_POST['item_user']; //----> is array
+            $user_id=get_current_user_id(); 
+           
+            $item_list=$_POST['item_user']; // string
+           
+            $meta = get_user_meta($user_id);
+            if(isset($meta['Item List'][0]) && $meta['Item List'][0]!==''){
+                $ar=$meta['Item List'][0]; //string
+                $ar=$ar.$item_list;
+                update_user_meta( $user_id,'Item List',$ar);
+            }
+            else{
+                update_user_meta( $user_id,'Item List',$item_list);
+            }
+            echo json_encode(array('res'=>gettype($ar)));
             wp_die();
-            
          }
     }
     add_action('wp_ajax_addToBagUser','add_To_Bag_User');
@@ -393,12 +384,11 @@ function get_Dishes() {
     function Remove_User_Dish(){
         global $wpdb;
         if(isset($_POST['type'])){
-            $userId=$_SESSION['userId'];
-            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-            $findUser=$wpdb->get_results($findUser);
-            $items=$findUser[0]->ItemList;;
-            
-            //Turn the session to JSON
+            $user_id=get_current_user_id(); 
+            $meta = get_user_meta($user_id);
+            $items=$meta['Item List'][0];
+
+            //Turn the Item List to JSON
             $beforeJson_User=str_replace('}{','},{',$items);
             $beforeJson_User=stripslashes($beforeJson_User);
             $beforeJson_User='['.$beforeJson_User.']';
@@ -416,8 +406,8 @@ function get_Dishes() {
             $updateItems=str_replace(']','',$updateItems);
 
             
-            // Update the Items in DB
-            $wpdb->query($wpdb->prepare("UPDATE wp_users_epicure SET ItemList='$updateItems' WHERE id= $userId "));
+            // Update the Items in WP_Users
+            update_user_meta( $user_id, 'Item List', $updateItems);
         
         }
     }
@@ -437,10 +427,9 @@ function send_ItemTo_Admin_User(){
             $totalPrice=sanitize_text_field($_POST['totalPrice']);
 
 
-            $userId=$_SESSION['userId'];
-            $findUser="SELECT * FROM wp_users_epicure WHERE id='$userId'";
-            $findUser=$wpdb->get_results($findUser);
-            $items_user=$findUser[0]->ItemList;
+            $user_id=get_current_user_id();
+            $meta = get_user_meta($user_id);
+            $items=$meta['Item List'][0];
             
             $table = $wpdb->prefix. 'order_users';
             $data=array(
@@ -448,7 +437,7 @@ function send_ItemTo_Admin_User(){
                 'email'=>$email,
                 'phone'=>$phone,
                 'date'=> date('Y-m-d H:i:s'),
-                'ItemList'=>$items_user,
+                'ItemList'=>$items,
                 'totalPrice'=>$totalPrice
             );
 
@@ -461,7 +450,8 @@ function send_ItemTo_Admin_User(){
             );
 
             $wpdb->insert($table,$data,$format);
-            $wpdb->query("UPDATE wp_users_epicure SET ItemList='' WHERE id= $userId ");
+            
+            update_user_meta( $user_id,'Item List','');
             wp_die();
             
             

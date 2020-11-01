@@ -1,6 +1,11 @@
 var $=jQuery
 $(document).ready(function(){
+    // Opening the Hidden Search Input
     $('.headContainer .mobile .showMenu .icons .searchIcon').on('click',function(){
+        $('.headContainer .mobile .searchMobile').toggle('slow')
+    })
+
+    $('.headContainer .mobile .showMenu .icons .searchIconUser').on('click',function(){
         $('.headContainer .mobile .searchMobile').toggle('slow')
     })
 
@@ -132,7 +137,6 @@ function addToBag(id ,numID){
     }
 
     if(change===''){
-    
         change='No Changes'
     }
     var quantity=Number(document.querySelector(`#num${numID}`).innerHTML);
@@ -312,12 +316,11 @@ if($(".right .search .search-form .search-input").val()==''){
     $(".right .search .search-form search-button").attr("disabled", true);
 }
 
-
-
-
 $(".right .search .search-form .search-input").focus(function(){
     $('#search_options_header').css('display','block');
 })
+
+
 
 function search_header_Input(){
     

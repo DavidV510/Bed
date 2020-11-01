@@ -54,7 +54,9 @@
              <p>chefs</p>
            </div>
            <div class="res-button">
-             <p>restaurants</p>
+           <a href="http://epicure.local/category/all/">
+           <p>restaurants</p>
+           </a>
            </div>
         </div>
 </section>

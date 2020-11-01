@@ -218,7 +218,7 @@
 
 
                                    <div class="modal-add-bag">
-                                        <?php if(isset($_SESSION['userId'])){ ?>
+                                        <?php    if(get_current_user_id()){ ?>
                                         <button class="users" onclick="Add_To_Bag_User('<?php echo $newId; ?>','<?php echo $dish->ID; ?>')">
                                             ADD TO BAG
                                         </button>

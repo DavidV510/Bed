@@ -12,25 +12,6 @@
     <img src="<?php echo get_template_directory_uri()."/img/about-logo.png" ?>">
     </div>
 
-    <?php 
-    // $email="dev@vinter-v.com";
-    // $getEmail="SELECT * FROM wp_users_epicure WHERE email LIKE '$email'";
-    // $items=$_SESSION['userItem'];
-            
-    // // //Turn the session to JSON
-    // // $beforeJson_User=str_replace('}{','},{',$items);
-    // // $beforeJson_User=stripslashes($beforeJson_User);
-    // // $beforeJson_User='['.$beforeJson_User.']';
-    // // $new_item_list=json_decode($beforeJson_User);
-    // // $pos=array_search('135a',array_column($new_item_list,'id'));
-    // // unset($new_item_list[$pos]);
-
-    // // $new_item_list=json_encode(array_values($new_item_list));
-    // // // $updateItems=str_replace('},{','}{',$new_item_list);
-    // // // $updateItems=str_replace('[','',$updateItems); 
-    // // // $updateItems=str_replace(']','',$updateItems);
-    // // echo $new_item_list ;
-    ?>
 
     <div class="Login">
     <h1>Login</h1>

@@ -107,4 +107,24 @@ function start_session(){
 
 add_action('init','start_session',1);
 
+
+
+
+/// Remove WP_Users Posts 
+function wph_admin_user_columns($columns) {
+  unset($columns['posts']);
+ 
+  return $columns;
+}
+ 
+add_filter('manage_users_columns', 'wph_admin_user_columns', 10, 3);
+
+if ( ! current_user_can( 'manage_options' ) ) {
+  add_filter('show_admin_bar', '__return_false', 1000);
+}
+
+//////////////
+
+  
+
 ?>
