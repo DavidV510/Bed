@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df2368e01f90a4d1443715fe9d2f4f06",
+    "content-hash": "efd00632d0674ce46ee8de4740934f12",
     "packages": [
         {
             "name": "composer/installers",
@@ -146,6 +146,35 @@
                 }
             ],
             "time": "2020-04-07T06:57:05+00:00"
+        },
+        {
+            "name": "koterle/envoy-oven",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mkoterle/envoy-oven.git",
+                "reference": "22417d2e1da8683df12f10adfd0e61d6050c565b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mkoterle/envoy-oven/zipball/22417d2e1da8683df12f10adfd0e61d6050c565b",
+                "reference": "22417d2e1da8683df12f10adfd0e61d6050c565b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "'Zero-downtime' deployments with symlinks and rollbacks.",
+            "support": {
+                "issues": "https://github.com/mkoterle/envoy-oven/issues",
+                "source": "https://github.com/mkoterle/envoy-oven/tree/2.0.0"
+            },
+            "time": "2019-12-08T11:50:04+00:00"
         },
         {
             "name": "oscarotero/env",
