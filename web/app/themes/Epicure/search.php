@@ -18,6 +18,7 @@
 
                 <div class="resu-content">
                   <p class="title"><?php the_title() ?></p>
+                  
                   <p class="chef"><?php echo $chef[0]->post_title; ?></p>
                 </div>
             </div>
