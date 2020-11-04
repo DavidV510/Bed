@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header();
+//  Master Branch
+?>
 
 <div class="popularRestaurants resContainer SearchCont">
 <?php
