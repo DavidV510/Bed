@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php get_header();
+
+// Master Branch
+?>
 
 <div class="popularRestaurants resContainer SearchCont">
 <?php
@@ -18,7 +21,7 @@
 
                 <div class="resu-content">
                   <p class="title"><?php the_title() ?></p>
-                  
+
                   <p class="chef"><?php echo $chef[0]->post_title; ?></p>
                 </div>
             </div>
