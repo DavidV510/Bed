@@ -1,5 +1,4 @@
 # Application
-web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
 web/app/upgrade
@@ -20,6 +19,7 @@ web/.htaccess
 
 # Composer
 /vendor
+Envoy.blade.php
 
 # WP-CLI
 wp-cli.local.yml

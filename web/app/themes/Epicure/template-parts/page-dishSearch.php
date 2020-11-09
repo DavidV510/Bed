@@ -83,14 +83,22 @@
                            <div class="modal-dish-side">
                                 <h1>Choose A Side</h1>
                                 <div class="side-pick">
-                                <?php 
-                                        $sides=get_the_terms(get_the_ID(),'sides');
-                                        foreach($sides as $side):?>
-                                        <div class="the-side-pick">
-                                            <input type="radio" class="check-side" value="<?php echo $side->name; ?>" name="side" /><?php echo $side->name; ?>
+                                        <?php 
+                                           
+                                            
+                                                $sides=get_the_terms($dish->ID,'sides');
+                                                foreach($sides as $side):?>
+                                                
+                                                <div class="the-side-pick">
+                                                <div id="<?php echo $side->term_id; ?>" class="side " onclick="chooseSide('<?php echo $side->name; ?>', <?php echo $side->term_id; ?>)">
+                                                    <div class="inside">
+                                                    <input type="radio"  style ="opacity:0;" value="<?php echo $side->name; ?>" name="side" />
+                                                    </div>
+                                                </div>
+                                                <?php echo $side->name; ?>
+                                                </div>
+                                                <?php endforeach; ?>
                                         </div>
-                                        <?php endforeach; ?>
-                                </div>
                            </div>
                             <?php  }else{
                                         echo '';
