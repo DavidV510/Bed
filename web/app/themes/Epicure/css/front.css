@@ -91,7 +91,7 @@ input:focus{
     opacity: 0.8;
     text-align: center;
     font-family:var(--Light);
-    font-size: 4vw;
+    font-size: 1.8vw;
 }
 
 .open .open-inner .open-search .search-button {
@@ -103,7 +103,7 @@ input:focus{
     height: 2.5vw;
     width: 3.2vw;
     position: relative;
-    top: 0.15vw;
+    top: 0.35vw;
     left: 3.8vw;
     z-index: 5;
     margin-right: 0rem;
