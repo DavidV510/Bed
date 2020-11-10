@@ -7,7 +7,7 @@
 
     add_action('admin_menu','epicure_options');
 
-    function epicure_orders(){ ?>
+function epicure_orders(){ ?>
 
         <div class="wrap">
         <h1>Orders</h1>
@@ -200,10 +200,9 @@
                 </tbody>
             </table>
         </div>
-   <?php }; ?>
-
-
-  <?php function epicure_users() { ?>
+   <?php }; 
+   
+   function epicure_users() { ?>
 
 <div class="wrap">
 <h1>Users</h1>
