@@ -1,5 +1,4 @@
 <?php 
-
  /*
         Plugin Name: Chefs Menu - Post Types
         Plugin URI: 
@@ -52,6 +51,4 @@ function chef_menu() {
 	register_post_type( 'Chef-Menu', $args );
 }
 
-add_action( 'init', 'chef_menu' );
-
-?>
+add_action( 'init', 'chef_menu' ); 

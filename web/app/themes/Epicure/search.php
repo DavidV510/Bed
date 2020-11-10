@@ -1,6 +1,5 @@
 <?php get_header(); 
-
-// Deployment Branch
+  // Deployment Branch
 ?>
 
 <div class="popularRestaurants resContainer SearchCont">

@@ -1,5 +1,4 @@
 <?php 
-
  /*
         Plugin Name: Dishes Menu - Post Types
         Plugin URI: 
@@ -166,6 +165,4 @@ function changes_dishes_taxonomy() {
 	add_action( 'init', 'sides_dishes_taxonomy', 0 );
 	add_action( 'init', 'changes_dishes_taxonomy', 0 );
 	add_action( 'init','whenServe_taxonomy',0);
-    add_action( 'init', 'dish_menu' );
-
-?>
+    add_action( 'init', 'dish_menu' );?>

@@ -76,11 +76,7 @@ function table_create($array){ ?>
                 </tbody>
               </table>
     </td>
-<?php }
-
-
-
-function new_modify_user_table_row_mbz( $val, $column_name, $user_id ) {
+<?php } function new_modify_user_table_row_mbz( $val, $column_name, $user_id ) {
     $meta = get_user_meta($user_id);
 
     switch ($column_name) {
@@ -111,4 +107,3 @@ function new_modify_user_table_row_mbz( $val, $column_name, $user_id ) {
     return $val;
 }
 add_filter( 'manage_users_custom_column', 'new_modify_user_table_row_mbz', 30, 30 );
-

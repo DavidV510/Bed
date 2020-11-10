@@ -1,5 +1,4 @@
 <?php 
-
  /*
         Plugin Name: Restaurants Menu - Post Types
         Plugin URI: 
@@ -9,7 +8,7 @@
         Text Domain: table
     */
 
-    if(!defined('ABSPATH')) die();
+if(!defined('ABSPATH')) die();
 
 
 // Register new Custom Post Type
@@ -39,6 +38,7 @@ function restaurant_menu() {
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
+		'show_in_nav_menus'  => true,
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'restaurant' ),
 		'capability_type'    => 'post',
@@ -46,12 +46,10 @@ function restaurant_menu() {
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor', 'thumbnail' ),
-    'taxonomies'          => array( 'category' ),
+        'taxonomies'         => array( 'category' ),
 	);
 
 	register_post_type( 'Restaurant-Menu', $args );
 }
 
 add_action( 'init', 'restaurant_menu' );
-
-?>

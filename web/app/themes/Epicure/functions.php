@@ -1,13 +1,12 @@
 <?php 
-  //  Php Queries
-  require get_template_directory().'/inc/queries.php';
+// //  Php Queries
+  get_template_directory().'/inc/queries.php';
   
-  // Database 
-  require get_template_directory().'/inc/database.php';
+// // Database 
+  get_template_directory().'/inc/database.php';
 
-  //Options Page
-  require get_template_directory().'/inc/options.php';
-
+// //Options Page
+  get_template_directory().'/inc/options.php';
 
   function epicure_scripts(){
      wp_enqueue_style('head',get_template_directory_uri().'/css/head.css',NULL,'1.0.0.6.4');
@@ -61,13 +60,8 @@
       'cate-menu'=>'cate menu'
     ));
   };
-
-
   add_action('init','epicure_menu');
   
-
-
-
   function admin_scripts(){
     wp_enqueue_script('ajax-admin', get_template_directory_uri().'/js/admin-ajax.js',array('jquery'), '1.0.0.1',true);
     wp_localize_script(
@@ -91,7 +85,7 @@
             'edit_posts'   => true,
             'upload_files' => true,
         )
-        );
+      );
 }
  
 // Add the simple_role.
@@ -123,8 +117,3 @@ if ( ! current_user_can( 'manage_options' ) ) {
   add_filter('show_admin_bar', '__return_false', 1000);
 }
 
-//////////////
-
-  
-
-?>
