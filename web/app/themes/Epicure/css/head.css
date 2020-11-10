@@ -62,7 +62,7 @@
 .headContainer .cont .left .menu{    
     align-items: center;
     display: flex;
-
+    margin-left: 1rem;
 }
 
 .headContainer .cont .left .menu ul {
@@ -568,7 +568,7 @@
     /* Search Mobile */
 
 
-    #search_options_header {
+    #search_options_mobile {
         width: 95%;
         display: none;
         position: absolute;
@@ -581,6 +581,30 @@
         padding: 0;
         z-index: 1;
     }
+
+    #search_options_mobile .search_list{
+        width: 100% !important;
+        padding-top: 1.5rem;
+        
+        cursor: pointer;
+        padding-left: 4rem;
+    }
+    
+    #search_options_mobile .search_list:hover{
+        background-color: #979797;
+    }
+    
+    #search_options_mobile .search_list h2{
+        opacity: 0.5;
+        font-family: var(--Thin);
+        font-size: 1.5rem;
+        letter-spacing: 1.07px;
+    }
+    
+    #search_options_mobile .search_list p{
+        font-family: var(--Thin);
+        font-size: 1.5rem;
+        
 }
 
 

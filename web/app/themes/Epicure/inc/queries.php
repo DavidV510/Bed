@@ -5,6 +5,9 @@ function get_Dishes() {
   
           $time=$_POST['name'];
           $timeDishes=get_field($time, $_POST['id']);
+          if(isset($timeDishes) || count($timeDishes)!==0){
+
+          
                 foreach($timeDishes as $dish):
                     $DishPrice=get_field('price',$dish->ID);
                     $newId=$dish->ID.'a';
@@ -176,7 +179,8 @@ function get_Dishes() {
 
             <!-- ///// END MODAL ///// -->
 
-             <?php endforeach; wp_die(); ?>
+             <?php endforeach; wp_die();
+             } ?>
              <?php } else {
               echo ''; 
             }

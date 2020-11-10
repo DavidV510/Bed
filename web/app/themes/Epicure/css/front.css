@@ -678,13 +678,14 @@ input:focus{
         background-color: rgb(255 255 255 / 11%);
         padding-top: 0rem;
         height: 9vw;
-        padding-left: 7vw;
+        padding-left: 9.3vw;
+        font-size: 4vw;
     }
 
     .open .open-inner .open-search input::placeholder{
         position: relative;
-        top: -1.4vw;
-        left: -0.7vw;
+        top: 0vw;
+        left: -0.6vw;
         opacity: 0.64;
         letter-spacing: 0.93px;
         padding-left: 0rem;
@@ -701,12 +702,13 @@ input:focus{
         margin-left: 3vw;
         display: none;
         position: absolute;
-        top: 2.5rem;
+        top: 10.5vw;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
         background-color: var(--white);
         height: 15rem;
         overflow: hidden;
         padding: 0;
+        z-index: 1;
     }
 
     /* ///////////// */

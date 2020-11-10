@@ -44,8 +44,8 @@
             <div class="right">
                 <div class="search">
                 <form class="search-form" method="get" action="<?php echo home_url(); ?>" role="search">
-                    <input class="search-input" type="search" onkeyup="search_header_Input()" autocomplete="off" name="s" placeholder="<?php _e('Search for restaurant cuisine, chef');?>">
-                    <button class="search-button" type="search" role="button"></button>
+                    <input id="searchHead" class="search-input" type="search" onkeyup="header_Input()" autocomplete="off" name="s" placeholder="<?php _e('Search for restaurant cuisine, chef');?>">
+                    <button onclick="head_input_check()" class="search-button" type="search" role="button"></button>
                 </form>
                 <ul id="search_options_header">
                     
@@ -267,10 +267,10 @@
 
             <div class="searchMobile">
                 <form class="search-form" method="get" action="<?php echo home_url(); ?>" role="search">
-                        <input class="search-input" type="search" name="s" onkeyup="search_header_Input()" autocomplete="off" placeholder="<?php _e('Search for restaurant cuisine, chef');?>">
-                        <button class="search-button"   type="search" role="button"></button>
+                        <input id="searchHead_mobile" class="search-input" type="search" name="s" onkeyup="mobile_header_Input()" autocomplete="off" placeholder="<?php _e('Search for restaurant cuisine, chef');?>">
+                        <button onclick="head_input_check()" class="search-button"   type="search" role="button"></button>
                 </form>
-                <ul id="search_options_header">
+                <ul id="search_options_mobile">
                     
                     <?php
                     $argsRest=array(

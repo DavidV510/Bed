@@ -8,7 +8,7 @@
         </p>
         <div class="open-search">
         <form class="search-form" method="get" action="<?php echo home_url(); ?>" role="search">
-                <button class="search-button" type="search" role="button"></button>
+                <button onclick="checkInput()" class="search-button" type="search" role="button"></button>
                 <input id="searchInput" onkeyup="search_Input()" class="search-input" autocomplete="off" type="search" name="s" placeholder="<?php _e('Search for restaurant cuisine, chef');?>">        
         </form>
             <ul id="search_options">

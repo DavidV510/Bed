@@ -1,8 +1,8 @@
 var $=jQuery
  
 
-if($('.striped > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate')){
-    $('.striped > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate').css('display','none');
+if($('.users > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate')){
+    $(' .users > tbody > :nth-child(odd), ul.striped > :nth-child(odd), .alternate').css('display','none');
 }
 
 if($('[data-colname="Item List"]')){

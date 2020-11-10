@@ -33,18 +33,7 @@ function epicureOrders_database(){
             ItemList varchar(23767),
             totalPrice int NOT NULL,
             PRIMARY KEY (id)
-    ) $charset_collate; 
-
-
-    CREATE TABLE $table_users ( 
-           id mediumint(9) NOT NULL AUTO_INCREMENT,
-           name varchar(50) NOT NULL,
-           phone varchar(10) NOT NULL,
-           email varchar(50) DEFAULT '' NOT NULL,
-           password varchar(23767) NOT NULL,
-           ItemList varchar(23767),
-           PRIMARY KEY (id)
-    ) $charset_collate;    ";
+    ) $charset_collate;";
     
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);

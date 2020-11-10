@@ -1,6 +1,6 @@
-<?php get_header();
+<?php get_header(); 
 
-// Development  Branch
+// Deployment Branch
 ?>
 
 <div class="popularRestaurants resContainer SearchCont">
@@ -21,13 +21,13 @@
 
                 <div class="resu-content">
                   <p class="title"><?php the_title() ?></p>
-
                   <p class="chef"><?php echo $chef[0]->post_title; ?></p>
                 </div>
             </div>
             </a>   
-       <?php  }?>
-       
+         <?php  }?>
+       </div>
+
          <?php if(get_post_type()=='dishes'){ ?>
           
           <div class="resContainer">
@@ -39,6 +39,6 @@
          <?php  } ?>
        <?php endwhile; ?>
        
-    </div>
+    
 </div>
 <?php get_footer(); ?>
