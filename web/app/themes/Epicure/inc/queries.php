@@ -91,20 +91,17 @@ function get_Dishes() {
                                         <h1>Choose A Side</h1>
                                         <div class="side-pick">
                                         <?php 
-                                           
-                                            
-                                                $sides=get_the_terms($dish->ID,'sides');
-                                                foreach($sides as $side):?>
-                                                
+                                            $sides=get_the_terms($dish->ID,'sides');
+                                            foreach($sides as $side):?>
                                                 <div class="the-side-pick">
-                                                <div id="<?php echo $side->term_id; ?>" class="side " onclick="chooseSide('<?php echo $side->name; ?>', <?php echo $side->term_id; ?>)">
-                                                    <div class="inside">
-                                                    <input type="radio"  style ="opacity:0;" value="<?php echo $side->name; ?>" name="side" />
+                                                    <div id="<?php echo $side->term_id; ?>" class="side " onclick="chooseSide('<?php echo $side->name; ?>', <?php echo $side->term_id; ?>)">
+                                                        <div class="inside">
+                                                        <input type="radio"  style ="opacity:0;" value="<?php echo $side->name; ?>" name="side" />
+                                                        </div>
                                                     </div>
+                                                    <?php echo $side->name; ?>
                                                 </div>
-                                                <?php echo $side->name; ?>
-                                                </div>
-                                                <?php endforeach; ?>
+                                            <?php endforeach; ?>
                                         </div>
                                    </div>
                                     <?php  }else{
@@ -119,16 +116,16 @@ function get_Dishes() {
                                                 $changes=get_the_terms($dish->ID,'changes');
                                                 foreach($changes as $change):?>
                                                 <div class="the-change-pick">
-                                                <div id="<?php echo $change->term_id; ?>" class="change " onclick="chooseChange('<?php echo $change->name; ?>', <?php echo $change->term_id; ?>)">
-                                                    <div class="inside">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11">
-                                                        <path fill="#000" fill-rule="evenodd" d="M12.813.794L5.27 8.642l-4.019-4.15a.58.58 0 0 0-.866 0 .65.65 0 0 0 0 .908l4.451 4.605c.124.13.31.195.433.195.185 0 .31-.064.432-.195l7.914-8.301a.65.65 0 0 0 0-.909c-.184-.26-.555-.26-.802 0z"/>
-                                                    </svg>
+                                                    <div id="<?php echo $change->term_id; ?>" class="change " onclick="chooseChange('<?php echo $change->name; ?>', <?php echo $change->term_id; ?>)">
+                                                        <div class="inside">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11">
+                                                            <path fill="#000" fill-rule="evenodd" d="M12.813.794L5.27 8.642l-4.019-4.15a.58.58 0 0 0-.866 0 .65.65 0 0 0 0 .908l4.451 4.605c.124.13.31.195.433.195.185 0 .31-.064.432-.195l7.914-8.301a.65.65 0 0 0 0-.909c-.184-.26-.555-.26-.802 0z"/>
+                                                        </svg>
 
-                                                    <input type="radio" style ="opacity:0;" class="check-change" value="<?php echo $change->name; ?>" name="change" />
+                                                        <input type="radio" style ="opacity:0;" class="check-change" value="<?php echo $change->name; ?>" name="change" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <?php echo $change->name; ?>
+                                                    <?php echo $change->name; ?>
                                                 </div>
                                                 <?php endforeach;
                                         ?>

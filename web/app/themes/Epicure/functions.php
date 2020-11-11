@@ -1,9 +1,9 @@
 <?php 
 // //  Php Queries
- require  get_template_directory().'/inc/queries.php';
+  require  get_template_directory().'/inc/queries.php';
   
 // // Database 
- require get_template_directory().'/inc/database.php';
+  require get_template_directory().'/inc/database.php';
 
 // //Options Page
   require get_template_directory().'/inc/options.php';

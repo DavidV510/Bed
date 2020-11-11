@@ -17,13 +17,13 @@
 
 #menu-cate-menu{
     display: grid;
-    grid-template-columns: 15% 15% 30% 20%;
-    max-width: 31vw;
+    grid-template-columns: 15% 20% 19% 15%;
+    max-width: 35vw;
     text-align: center;
     margin: 0 auto;
     margin-top: 4.3rem;
     position: relative;
-    left: 1.2vw;
+    left: 3.5vw;
 }
 
 #menu-cate-menu a{
