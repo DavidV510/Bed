@@ -13,26 +13,31 @@
 
 @font-face {
     font-family:'Helvetica-Bold';
+    /* 3.15.175.12 */
     src: url(http://epicure.local/app/themes/Epicure/fonts/Helvetica-Bold.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-BlackCond';
+    /* 3.15.175.12 */
     src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-BlackCond.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Light';
+    /* 3.15.175.12 */
     src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Light.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Medium';
+    /* 3.15.175.12 */
     src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Medium.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Thin';
+    /* 3.15.175.12 */
     src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Thin.ttf);
 }
 
