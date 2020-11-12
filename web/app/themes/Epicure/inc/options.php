@@ -2,7 +2,6 @@
 
     function epicure_options(){
         add_menu_page( 'epicure','Epicure Orders', 'administrator','epicure_options', 'epicure_orders','',30);
-        add_submenu_page('epicure_options','Epicure Users','Epicure Users','administrator','epicure_users','epicure_users',31);
     }
 
     add_action('admin_menu','epicure_options');

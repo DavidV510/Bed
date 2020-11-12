@@ -31,9 +31,14 @@ function new_modify_user_table_mbz( $column ) {
 add_filter( 'manage_users_columns', 'new_modify_user_table_mbz' );
 
 
-function table_create($array){ ?>
+function table_create($array , $user_id){ 
+    
+    $meta = get_user_meta($user_id);
+    ?>
 <td class="wisper">
+<h1>For User: <?php echo $meta['nickname'][0]; ?></h1>
      <table class="wp-list-table">
+     
                 <thead>
                   <tr>
                   <th>Title</th>
@@ -97,7 +102,7 @@ function table_create($array){ ?>
                 $beforeJson_User='['.$beforeJson_User.']';
                 $theJson_User=json_decode($beforeJson_User);
                 
-                return table_create($theJson_User) ;
+                return table_create($theJson_User, $user_id) ;
         
             }else{
                 return '';
@@ -106,4 +111,4 @@ function table_create($array){ ?>
     }
     return $val;
 }
-add_filter( 'manage_users_custom_column', 'new_modify_user_table_row_mbz', 30, 30 );
+add_filter( 'manage_users_custom_column', 'new_modify_user_table_row_mbz', 1, 3 );

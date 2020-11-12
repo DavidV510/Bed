@@ -43,7 +43,7 @@ if(get_current_user_id()){?>
                      
                      //Displaying the Items
                     foreach($theJson_User as $item){ 
-                      $newId++;
+                      
                       $item->id=$newId;
                       ?>
                        <tr id="<?php echo $newId; ?>">
@@ -68,10 +68,10 @@ if(get_current_user_id()){?>
                                     <path d="M13.544.48V12H8.291c-1.874.027-2.811-1.136-2.811-3.49V4.06"/>
                                 </g>
                             </svg></td>
-                            <td><button class="CartButton" onclick="removeDish_User('<?php echo $newId; ?>')"> Remove </button></td>
+                            <td><button class="CartButton" onclick="removeDish_User(<?php echo $newId; ?>)"> Remove </button></td>
                        
                    <?php 
-
+                    $newId++;
                     $total=$total+$item->total;
                     }
 

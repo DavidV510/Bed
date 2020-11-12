@@ -54,6 +54,8 @@ $(document).ready(function(){
 
 })
 
+
+
 function sendAjax(arg,num){
     var id=$('#dishes').data('id')
 
@@ -82,33 +84,6 @@ function sendAjax(arg,num){
 
 
 
-function reduce(id){
-    var num=document.querySelector(`#num${id}`).innerHTML
-    num=Number(num)
-    num--
-    document.querySelector(`#num${id}`).innerHTML=num
-    console.log(Number(num))
-    if(Number(num)<=1){
-        document.querySelector('.reduce').style.opacity="0"
-        document.querySelector('.reduce').setAttribute("disabled")
-    }
-    if(Number(num)>1){
-        document.querySelector('.reduce').style.opacity="100"
-        document.querySelector('.reduce').setAttribute("editable")
-    }
-}
-
-function add(id){
-    var num=document.querySelector(`#num${id}`).innerHTML
-    num=Number(num)
-    num++
-    document.querySelector(`#num${id}`).innerHTML=num
-    if(Number(num)>1){
-        document.querySelector('.reduce').style.opacity="100"
-        document.querySelector('.reduce').setAttribute("editable")
-    }
-}
-
 
 var CartDishes=[];
 var Local_CartDishes=[];
@@ -129,6 +104,34 @@ function chooseChange(name,id){
 }
 
 
+function reduce(id){
+    var num=document.querySelector(`#num${id}`).innerText
+    num=Number(num)
+    num--
+    document.querySelector(`#num${id}`).innerText=num
+    console.log(Number(num))
+    if(Number(num)<=1){
+        document.getElementById(`reduce-${id}`).style.opacity="0"
+        document.getElementById(`reduce-${id}`).disabled=true;
+       // document.querySelector('.reduce').setAttribute("disabled")
+    }
+    if(Number(num)>1){
+        document.getElementById(`reduce-${id}`).style.opacity="100"
+    }
+}
+
+function add(id){
+    var num=document.querySelector(`#num${id}`).innerText
+    num=Number(num)
+    num++
+    document.querySelector(`#num${id}`).innerText=num
+    if(Number(num)>1){
+        document.getElementById(`reduce-${id}`).style.opacity="100"
+        document.getElementById(`reduce-${id}`).disabled=false;
+    }
+}
+
+
 function addToBag(id ,numID){
     var title=$(`#${id} .innerModal .modal-dish-title .title span`).text();
     var img=$(`#${id} .innerModal .modal-dialog .modal-dish-img img`).attr('src');
@@ -140,7 +143,7 @@ function addToBag(id ,numID){
     if(change===''){
         change='No Changes'
     }
-    var quantity=Number(document.querySelector(`#num${numID}`).innerHTML);
+    var quantity=Number(document.querySelector(`#num${numID}`).innerText);
     var total=quantity*Number($(`#${id} .modal-dish-content .modal-dish-price span span`).text());
 
     var ItemObject={
@@ -159,14 +162,14 @@ function addToBag(id ,numID){
         Local_CartDishes.push(ItemObject)
         localStorage.setItem('CartDishes',JSON.stringify(Local_CartDishes))
         console.log('CartDishes Exists: '+Local_CartDishes)
-        window.location='http://epicure.local/cart/'
+        window.location='http://3.15.175.12/cart/'
     }
     else{
         CartDishes.push(ItemObject);
         localStorage.setItem('CartDishes',JSON.stringify(CartDishes))
         Local_CartDishes=JSON.parse(localStorage.getItem('CartDishes'));
         console.log('CartDishes Dont Exists: ' + Local_CartDishes)
-        window.location='http://epicure.local/cart/'
+        window.location='http://3.15.175.12/cart/'
 
     }
 }
@@ -180,9 +183,7 @@ if(TableDishes){
     var tr=''
     var id=0
     for(var i=0;i<TableDishes.length;i++){
-      id++
-      TableDishes[i].id=id
-      tr+=`<tr id=${id}><td>`+TableDishes[i].title+`</td>`
+      tr+=`<tr id=${i}><td>`+TableDishes[i].title+`</td>`
       tr+=`<td class="table-img"><img src='${TableDishes[i].img}'> </td>`
       tr+=`<td>${TableDishes[i].side}</td>`
       tr+=`<td>${TableDishes[i].change}</td>`
@@ -193,7 +194,7 @@ if(TableDishes){
           <path d="M13.544.48V12H8.291c-1.874.027-2.811-1.136-2.811-3.49V4.06"/>
       </g>
   </svg></td>`
-      tr+=`<td><button class="CartButton" onclick="removeDish('${id}')"> Remove </button></td></tr>`
+      tr+=`<td><button class="CartButton" onclick="removeDish(${i})"> Remove </button></td></tr>`
       
      total+=TableDishes[i].total
     
@@ -206,16 +207,14 @@ $('table tbody').append(tr)
 
 
 function removeDish(id){
-    var theDish=TableDishes.find(dish => dish.id===id)
-    TableDishes.splice(TableDishes.indexOf(theDish),1);
-    window.location='http://epicure.local/cart/'
+    TableDishes.splice(id,1);
     localStorage.setItem('CartDishes',JSON.stringify(TableDishes));
-    
+    window.location='http://3.15.175.12/cart/'
     $(`#${id}`).remove();
 
     var newTotal=Number($('.form-Price').text())-Number(theDish.total)
 
-    $('.form-Price').text(newTotal)
+    $('#form1 .form-Price').text(newTotal)
     
     
 }
@@ -252,7 +251,7 @@ document.querySelector("#form1").addEventListener('submit',function(e){
                     success:function(response){
                         console.log('Successfully Sended DATA')
                         window.localStorage.clear();
-                        window.location='http://epicure.local/thanks-for-ordering/'
+                        window.location='http://3.15.175.12/thanks-for-ordering/'
                     },
                     error:function(response){
                         console.log(response)

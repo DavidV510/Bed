@@ -54,7 +54,7 @@
              <p>chefs</p>
            </div>
            <div class="res-button">
-           <a href="http://epicure.local/category/all/">
+           <a href="http://3.15.175.12/category/all/">
            <p>restaurants</p>
            </a>
            </div>
@@ -65,7 +65,8 @@
     <h1>THE POPULAR RESTAURANTS IN EPICURE :</h1>
     <div class="grid3 the-restaurants container owl-carousel">
       <?php
-      $PopularRestaurants=get_field('choose_the_restaurants');
+      global $post;
+      $PopularRestaurants=get_field('choose_the_restaurants' ,$post->ID);
        foreach($PopularRestaurants as $restu):?>
         <?php $chef=get_field('main_chef',$restu->ID); ?>
 
@@ -82,8 +83,13 @@
         </div>
         </a>
 
-       <?php endforeach; ?>
-       <a class="all" href="<?php echo get_category_link(2); ?>">
+        <?php endforeach; 
+       
+       $category_id = get_cat_ID('All');
+        $category_link = get_category_link( $category_id );
+       ?>
+       
+       <a class="all" href="<?php echo $category_link; ?>">
        <h3>All Restaurants <img class="arrow-img" src="<?php echo get_template_directory_uri()."/img/all-restaurants-arrows.svg" ?>"></h3>
        </a>
     </div>
@@ -199,11 +205,9 @@
     <div class="innerAbout">
         <div class="aboutUs">
             <div class="aboutContent">
-                <?php $id=22;
-                    $post=get_post($id);
-                ?>
+                <?php global $post; ?>
                 <h1>ABOUT US:</h1>  
-                <p><?php echo $post->post_content; ?></p>
+                <p><?php echo get_field('about_us',$post->ID) ; ?></p>
             </div>
 
             <div class="aboutImg">

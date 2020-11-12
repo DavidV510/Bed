@@ -139,7 +139,7 @@ function get_Dishes() {
                                    <div class="modal-dish-quantity">
                                        <h1>Quantity</h1>
                                        <div class="quant">
-                                            <button class="reduce" onclick="reduce(<?php echo $dish->ID; ?>)">
+                                            <button id="<?php echo 'reduce-'.$dish->ID; ?>" class="reduce" onclick="reduce(<?php echo $dish->ID; ?>)">
                                             -
                                             </button>
 
@@ -174,7 +174,7 @@ function get_Dishes() {
                     </div>
                 </div>
 
-            <!-- ///// END MODAL ///// -->
+<!-- ///// END MODAL ///// -->
 
              <?php endforeach; wp_die();
              } ?>
@@ -277,30 +277,28 @@ function get_Dishes() {
             
             $phone=sanitize_text_field($_POST['phoneUser']);
             $password=$_POST['passwordUser'];
-            // $password=password_hash($password,PASSWORD_DEFAULT);
-            
-            // $user_login = wp_slash( $username );
-            // $user_email = wp_slash( $email );
-            // $user_pass  = $password;
-            // $userdata = compact( $name, $email , $password);
+           
             if(email_exists($email) || username_exists($name)){
                 echo json_encode(array('res'=>'existes'));
             }else{
-                
-                wp_create_user($name,$password,$email);
+                $user=array();
+                $user['user_login']=$name;
+                $user['user_email']=$email;
+                $user['user_pass']=$password;
+                $user['phone']=$phone;
+                //wp_insert_user($user);
                 $login_array=array();
                 $login_array['user_login']=$name;
                 $login_array['user_password']=$password;
-
+                $login_array['user_phone']=$phone;
+                $userid = wp_insert_user($user);
+                    add_user_meta( $userid, 'phone', $phone ); // add the meta
+                
                 wp_signon($login_array,true);
                 echo json_encode(array('res'=>'added'));
             }
-           
-       
-            
         }
     }
-
 
     add_action('wp_ajax_createUser','create_userEpicure');
     add_action('wp_ajax_nopriv_createUser','create_userEpicure');
@@ -397,8 +395,7 @@ function get_Dishes() {
            
 
             // Remove the Dish
-            $pos=array_search($_POST['id'],array_column($new_item_list,'id'));
-            unset($new_item_list[$pos]);
+            unset($new_item_list[$_POST['id']]);
 
             // Back to string
             $new_item_list=json_encode(array_values($new_item_list));
@@ -454,8 +451,6 @@ function send_ItemTo_Admin_User(){
             
             update_user_meta( $user_id,'Item List','');
             wp_die();
-            
-            
         }
                
     }
