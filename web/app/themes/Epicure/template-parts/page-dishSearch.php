@@ -132,7 +132,7 @@
                            <div class="modal-dish-quantity">
                                <h1>Quantity</h1>
                                <div class="quant">
-                                    <button class="reduce" onclick="reduce(<?php echo get_the_ID(); ?>)">
+                                    <button id="<?php echo 'reduce-'.get_the_ID(); ?>" class="reduce" onclick="reduce(<?php echo get_the_ID(); ?>)">
                                     -
                                     </button>
 

@@ -140,7 +140,7 @@ function Add_To_Bag_User(id ,numID){
         },
         url:admin_ajax.ajaxurl,
         success:function(response){
-            var rep=$.trim(response)
+          var rep=$.trim(response)
           window.location='http://3.15.175.12/cart/'
         }
     })
