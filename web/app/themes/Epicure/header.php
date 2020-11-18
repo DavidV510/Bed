@@ -176,15 +176,13 @@
                  if(get_current_user_id()){
                     $user_id=get_current_user_id();
                     $meta = get_user_meta($user_id);
-
                     //Get the User meta from the WP_Users
-                    if($meta['Item List'][0]){
+                    if(isset($meta['Item List'])){
                         $item_list = $meta['Item List'][0];
-                        }else{
-                           $item_list='';
-                        } 
-                     
-                
+                    }else{
+                        $item_list='';
+                    } 
+                    
                     // Turn to JSON
                     $beforeJson_User=stripslashes($item_list);
                     $beforeJson_User=str_replace('}{','},{',$beforeJson_User);
