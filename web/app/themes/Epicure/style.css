@@ -13,27 +13,27 @@
 
 @font-face {
     font-family:'Helvetica-Bold';
-    src: url(http://3.15.175.12/app/themes/Epicure/fonts/Helvetica-Bold.ttf);
+    src: url(http://epicure.local/app/themes/Epicure/fonts/Helvetica-Bold.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-BlackCond';
-    src: url(http://3.15.175.12/app/themes/Epicure/fonts/HelveticaNeue-BlackCond.ttf);
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-BlackCond.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Light';
-    src: url(http://3.15.175.12/app/themes/Epicure/fonts/HelveticaNeue-Light.ttf);
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Light.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Medium';
-    src: url(http://3.15.175.12/app/themes/Epicure/fonts/HelveticaNeue-Medium.ttf);
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Medium.ttf);
 }
 
 @font-face {
     font-family:'HelveticaNeue-Thin';
-    src: url(http://3.15.175.12/app/themes/Epicure/fonts/HelveticaNeue-Thin.ttf);
+    src: url(http://epicure.local/app/themes/Epicure/fonts/HelveticaNeue-Thin.ttf);
 }
 
 
@@ -61,7 +61,7 @@ body{
 }
 
 .container{
-    max-width: 110rem !important;
+    width: 110rem !important;
     margin: 0 auto;
 }
 

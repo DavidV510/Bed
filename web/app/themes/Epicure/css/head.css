@@ -19,7 +19,7 @@
     padding-bottom: 0.4rem;
 }
 .headContainer{
-    max-width: 140rem;
+    max-width: 85vw;
     margin: 0 auto;
     display: flex;
     font-family: var(--Thin);
@@ -90,23 +90,24 @@
 .headContainer .cont .right .search{
     width: 100%;
     position: relative;
+    left: 3vw;
 }
 
 .headContainer .cont .right .search .search-form input{
-    width: 41rem;
+    width: 23em;
     border-radius: 4px;
     border: solid 0.5px rgb(129, 129, 129);
     background-color: rgba(255, 255, 255, 0.11);
     padding-top: 0;
-    height: 3.5rem;
-    padding-left: 1rem;
-    font-size: 2rem;
+    height: 2.21em;
+    padding-left: 0.3vw;
+    font-size: 1vw;
 }
 
 .headContainer .cont .right .search .search-form input::placeholder{
     opacity: 0.8;
-    padding-left: 1.1rem;
-    font-size: 1.8rem;
+    padding-left: 0.8vw;
+    font-size: 1vw;
     letter-spacing: 1.29px;
 }
 
@@ -114,13 +115,13 @@
     background-image: url(../img/search-icon.svg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 2.2rem 2rem;
+    background-size: 1.1vw 2vw;
     border: none;
-    height: 2.2rem;
-    width: 2.2rem;
+    height: 1.2vw;
+    width: 1.2vw;
     position: relative;
-    top: 0.35rem;
-    right: 3.5rem;
+    top: 0.3vw;
+    right: 1.8vw;
     margin-right: 0rem;
     background-color: transparent;
     cursor: pointer;
@@ -134,7 +135,7 @@
     width: 95%;
     display: none;
     position: absolute;
-    top: 3.5rem;
+    top: 2.6vw;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
     background-color: var(--white);
     height: 22rem;
@@ -198,10 +199,10 @@
 }
 
 .headContainer .cont .right .userConected{
-    width: 20rem;
-    height: 4rem;
+    width: 13vw;
+    height: 2vw;
     display: flex;
-    margin-right: 2rem;
+    margin-right: 0.4vw;
     text-align: center;
 }
 .headContainer .cont .right .userConected p{
@@ -219,12 +220,12 @@
     border-radius: 2.1px;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 0.7vw;
     font-family: var(--Thin);
     background-color: #000;
     letter-spacing: 1.08px;
     text-align: center;
-    padding: 1rem 1rem;
+    padding: 0.5vw 0.5vw;
     cursor: pointer;
     transition: 0.3s all ease;
 }
@@ -235,6 +236,7 @@
     height: 2.12rem;
     position: relative;
 }
+
 .headContainer .cont .right .bagUser .cartNum{
     position: absolute;
     top: -0.6vw;
@@ -269,6 +271,7 @@
     }
     .headContainer{
         display: block;
+        max-width: 100vw;
     }
 
     .headContainer .desktop{

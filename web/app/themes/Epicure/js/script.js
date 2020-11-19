@@ -28,6 +28,11 @@ $(document).ready(function(){
 
     // Activate Owl-Carousel 
     if(parseInt($(window).width()) < 780){
+        //.chefOfWeek .chefRestaurants .the-Restaurants
+        $('.the-restaurants').addClass('restmobile')
+        $('.the-dishes').addClass('restmobile')
+
+
         $('.owl-carousel').owlCarousel({
             center: false,
             dots:false,
@@ -47,13 +52,17 @@ $(document).ready(function(){
             }
             
         })
+
     }
     else{
+        $('.the-restaurants').removeClass('restmobile')
+        $('.the-dishes').removeClass('restmobile');
         $('.owl-carousel').css('display','grid');
     }
 
 })
 
+$('.your-class')
 
 
 function sendAjax(arg,num){
@@ -90,17 +99,31 @@ var Local_CartDishes=[];
 var side=''
 var change=''
 function chooseSide(name , id){
-    console.log('Side name is ' + name + id)
-    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .side .inside`).css('display','none')
-    $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick #${id} .inside`).css('display','block')
-    side=name
+    
+    if($(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick #${id} .inside`).css('display') != 'none' ){
+        $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .side .inside`).css('display','none')
+        side=''
+    }
+    else{
+        $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick .side .inside`).css('display','none')
+        $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-side .side-pick .the-side-pick #${id} .inside`).css('display','block')
+        side=name
+    }
 }
 
 function chooseChange(name,id){
-    console.log('Change name is ' + name + id)
+    
+    if($(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick #${id} .inside`).css('display') != 'none' ){
+        $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick .change .inside`).css('display','none')
+        change=''
+    }
+
+   else{
     $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick .change .inside`).css('display','none')
     $(`.modal .innerModal .modal-dialog .modal-dish-inner .modal-dish-content .modal-dish-change .change-pick .the-change-pick #${id} .inside`).css('display','block')
+
     change=name
+   }
 }
 
 
@@ -162,14 +185,14 @@ function addToBag(id ,numID){
         Local_CartDishes.push(ItemObject)
         localStorage.setItem('CartDishes',JSON.stringify(Local_CartDishes))
         console.log('CartDishes Exists: '+Local_CartDishes)
-        window.location='http://3.15.175.12/cart/'
+        window.location='http://epicure.local/cart/'
     }
     else{
         CartDishes.push(ItemObject);
         localStorage.setItem('CartDishes',JSON.stringify(CartDishes))
         Local_CartDishes=JSON.parse(localStorage.getItem('CartDishes'));
         console.log('CartDishes Dont Exists: ' + Local_CartDishes)
-        window.location='http://3.15.175.12/cart/'
+        window.location='http://epicure.local/cart/'
 
     }
 }
@@ -209,7 +232,7 @@ $('table tbody').append(tr)
 function removeDish(id){
     TableDishes.splice(id,1);
     localStorage.setItem('CartDishes',JSON.stringify(TableDishes));
-    window.location='http://3.15.175.12/cart/'
+    window.location='http://epicure.local/cart/'
     $(`#${id}`).remove();
 
     var newTotal=Number($('.form-Price').text())-Number(theDish.total)
@@ -251,7 +274,7 @@ document.querySelector("#form1").addEventListener('submit',function(e){
                     success:function(response){
                         console.log('Successfully Sended DATA')
                         window.localStorage.clear();
-                        window.location='http://3.15.175.12/thanks-for-ordering/'
+                        window.location='http://epicure.local/thanks-for-ordering/'
                     },
                     error:function(response){
                         console.log(response)
@@ -275,9 +298,13 @@ if($('#searchInput').val()===''){
 }
 
 $('#searchInput').focus(function(){
+    $('#search_options').css('opacity','100%');
     $('#search_options').css('display','block');
 })
 
+$('#searchInput').focusout(function(){
+    $('#search_options').css('opacity','0%');
+})
 
 
 function search_Input(){
@@ -328,9 +355,14 @@ if($("#searchHead").val()==''){
 }
 
 $(".right .search .search-form .search-input").focus(function(){
+    $('#search_options_header').css('opacity','100%');
     $('#search_options_header').css('display','block');
 })
 
+$(".right .search .search-form .search-input").focusout(function(){
+    $('#search_options_header').css('opacity','0%');
+    //$('#search_options_header').css('display','none');
+})
 
 
 
@@ -379,9 +411,14 @@ if($(".headContainer .mobile .searchMobile .search-form input").val()==''){
 
 
 $(".headContainer .mobile .searchMobile .search-form input").focus(function(){
+    $('.headContainer .mobile .searchMobile #search_options_mobile').css('opacity','100%');
     $('.headContainer .mobile .searchMobile #search_options_mobile').css('display','block');
 })
 
+$(".headContainer .mobile .searchMobile .search-form input").focusout(function(){
+    $('.headContainer .mobile .searchMobile #search_options_mobile').css('opacity','0%');
+   
+})
 
 
 function mobile_header_Input(){

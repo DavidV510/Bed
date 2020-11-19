@@ -29,7 +29,7 @@ input:focus{
 
 /* Open Section */
 .open{
-    height: 75rem;
+    height: 37vw;
     background-position: 0rem 0rem;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -76,12 +76,12 @@ input:focus{
     border: solid 0.5px rgb(129, 129, 129);
     background-color: rgba(255, 255, 255, 0.11);
     padding-top: 0.5rem;
-    height: 5.5rem;
+    height: 3vw;
     position: relative;
     bottom: 2.5vw;
     top: -0.3vw;
-    padding-left: 9rem;
-    font-size: 2.5rem;
+    padding-left: 4vw;
+    font-size: 1.5vw;
 }
 
 .open .open-inner .open-search input::placeholder{
@@ -455,7 +455,7 @@ input:focus{
     width: 100%;
 }
 .chefOfWeek .theChef .chefImg .name p {
-    padding-top: 1.7rem;
+    padding-top: 0.5vw;
     margin: 0;
 }
 
@@ -763,8 +763,27 @@ input:focus{
     .owl-carousel .owl-stage-outer {
         position: relative;
         margin-left: -30vw;
+        padding-right: 0vw;
     }
     
+    .owl-carousel .owl-stage{
+        /* transform: translate3d(0px, 0px, 0px) !important; */
+    }
+
+
+    /* My Carousel */
+
+    .restmobile{
+        display: grid;
+        grid-template-columns: repeat(3,33.33%);
+        grid-gap: 36vw;
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    .restmobile::-webkit-scrollbar{
+        display: none;
+    }
+
     /* Popular Restaurants */
     .popularRestaurants {
         margin-top: 5rem;
@@ -777,7 +796,7 @@ input:focus{
     .popularRestaurants h1{
         font-size: 3.5vw;
     }
-    .popularRestaurants .the-restaurants .all{
+    .popularRestaurants .all{
         display: none;
     }
     
@@ -816,7 +835,7 @@ input:focus{
     .popularDishes .the-dishes .PopDish{
         text-align: center;
         width: 57vw;
-        height: 60rem;
+        height: 156vw;
         margin-top: 1vw;
         margin-bottom: 5rem;
         background-color: var(--mask);
@@ -1054,10 +1073,10 @@ input:focus{
     }
     .About .innerAbout .appStore .apple{
         display: flex;
-        width: 15.7rem;
-        height: 4.2rem;
+        width: 42.7vw;
+        height: 12.2vw;
         border-radius: 6.7px;
-        padding: 0.5rem 2rem;
+        padding: 1.5vw 5vw;
         border: solid 0.6px var(--black);
     }
 

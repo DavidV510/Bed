@@ -54,19 +54,22 @@
              <p>chefs</p>
            </div>
            <div class="res-button">
-           <a href="http://3.15.175.12/category/all/">
+           <a href="http://epicure.local/category/all/">
            <p>restaurants</p>
            </a>
            </div>
         </div>
 </section>
 
+
+
 <section class="popularRestaurants">
     <h1>THE POPULAR RESTAURANTS IN EPICURE :</h1>
-    <div class="grid3 the-restaurants container owl-carousel">
+    <div class="grid3 the-restaurants container">
       <?php
       global $post;
       $PopularRestaurants=get_field('choose_the_restaurants' ,$post->ID);
+      
        foreach($PopularRestaurants as $restu):?>
         <?php $chef=get_field('main_chef',$restu->ID); ?>
 
@@ -83,22 +86,25 @@
         </div>
         </a>
 
-        <?php endforeach; 
+       <?php endforeach; 
        
        $category_id = get_cat_ID('All');
         $category_link = get_category_link( $category_id );
        ?>
        
-       <a class="all" href="<?php echo $category_link; ?>">
+       
+    </div>
+    <div class="grid3 the-restaurants container">
+    <a class="all" href="<?php echo $category_link; ?>">
        <h3>All Restaurants <img class="arrow-img" src="<?php echo get_template_directory_uri()."/img/all-restaurants-arrows.svg" ?>"></h3>
        </a>
     </div>
-
+   
 </section>
 
 <section class="popularDishes">
      <h1>SIGNATURE DISH OF :</h1>
-     <div class="grid3 the-dishes container owl-carousel">
+     <div class="grid3 the-dishes container ">
         <?php 
           $PopularDishes=get_field('pick_the_dishes');
           foreach($PopularDishes as $dish):?>

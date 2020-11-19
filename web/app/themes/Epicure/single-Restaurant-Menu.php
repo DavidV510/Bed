@@ -14,7 +14,7 @@
                   $close=strtotime(get_field('closing_time'));
                   $current=strtotime(date('H:i'));
                 if($open<=$current && $current<=$close){?>
-                <?xml version="1.0" encoding="UTF-8"?>
+               
                 <svg width="17px" height="18px" viewBox="0 0 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <!-- Generator: sketchtool 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
                     
