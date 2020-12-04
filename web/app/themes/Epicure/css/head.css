@@ -177,7 +177,8 @@
     width: 2.5rem;
     height: 2.2rem;
     margin-right: 2.8rem;
-    
+    margin-left: 2vw;
+    z-index: 10;
 }
 
 

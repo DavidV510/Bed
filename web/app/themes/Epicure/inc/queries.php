@@ -2,9 +2,11 @@
 
 function get_Dishes() {
     if(isset($_POST['name'])){
-  
+        
+        while(have_rows('serving_times', $_POST['postId'])): the_row(); 
           $time=$_POST['name'];
-          $timeDishes=get_field($time, $_POST['id']);
+          $timeDishes=get_sub_field($time);
+         
           if(isset($timeDishes) || count($timeDishes)!==0){
 
           
@@ -176,12 +178,14 @@ function get_Dishes() {
 
 <!-- ///// END MODAL ///// -->
 
-             <?php endforeach; wp_die();
-             } ?>
-             <?php } else {
+             <?php endforeach; wp_die(); } ?>
+             
+             <?php
+             endwhile;
+              } else {
               echo ''; 
             }
-      }
+}
     
    
     add_action('wp_ajax_getDishes','get_Dishes');

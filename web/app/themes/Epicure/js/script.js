@@ -65,7 +65,7 @@ $(document).ready(function(){
 $('.your-class')
 
 
-function sendAjax(arg,num){
+function sendAjax(arg,num,postId){
     var id=$('#dishes').data('id')
 
     $.ajax({
@@ -74,7 +74,8 @@ function sendAjax(arg,num){
             data:{
                 'action': 'getDishes',
                 'name': arg,
-                'id' : id
+                'id' : id,
+                'postId': postId
             },
             success:function(response){
                var rep=response.replace('0','')
@@ -185,14 +186,14 @@ function addToBag(id ,numID){
         Local_CartDishes.push(ItemObject)
         localStorage.setItem('CartDishes',JSON.stringify(Local_CartDishes))
         console.log('CartDishes Exists: '+Local_CartDishes)
-        window.location='http://epicure.local/cart/'
+        window.location='http://3.15.175.12/cart/'
     }
     else{
         CartDishes.push(ItemObject);
         localStorage.setItem('CartDishes',JSON.stringify(CartDishes))
         Local_CartDishes=JSON.parse(localStorage.getItem('CartDishes'));
         console.log('CartDishes Dont Exists: ' + Local_CartDishes)
-        window.location='http://epicure.local/cart/'
+        window.location='http://3.15.175.12/cart/'
 
     }
 }
@@ -232,7 +233,7 @@ $('table tbody').append(tr)
 function removeDish(id){
     TableDishes.splice(id,1);
     localStorage.setItem('CartDishes',JSON.stringify(TableDishes));
-    window.location='http://epicure.local/cart/'
+    window.location='http://3.15.175.12/cart/'
     $(`#${id}`).remove();
 
     var newTotal=Number($('.form-Price').text())-Number(theDish.total)
@@ -274,7 +275,7 @@ document.querySelector("#form1").addEventListener('submit',function(e){
                     success:function(response){
                         console.log('Successfully Sended DATA')
                         window.localStorage.clear();
-                        window.location='http://epicure.local/thanks-for-ordering/'
+                        window.location='http://3.15.175.12/thanks-for-ordering/'
                     },
                     error:function(response){
                         console.log(response)

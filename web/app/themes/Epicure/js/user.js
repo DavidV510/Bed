@@ -95,7 +95,7 @@ function logout(){
         },
         url:admin_ajax.ajaxurl,
         success:function(response){
-            window.location='http://epicure.local/'
+            window.location='http://3.15.175.12/'
         }
     })
 }
@@ -141,7 +141,7 @@ function Add_To_Bag_User(id ,numID){
         url:admin_ajax.ajaxurl,
         success:function(response){
             var rep=$.trim(response)
-          window.location='http://epicure.local/cart/'
+          window.location='http://3.15.175.12/cart/'
         }
     })
 }
@@ -159,7 +159,7 @@ function removeDish_User(id){
         },
         url:admin_ajax.ajaxurl,
         success:function(response){
-            window.location='http://epicure.local/cart/'
+            window.location='http://3.15.175.12/cart/'
         }
     })
 }
@@ -189,7 +189,7 @@ if(document.querySelector('#form3')){
                         url:admin_ajax.ajaxurl,
                         success:function(response){
                             console.log('Successfully Sended DATA')
-                            window.location='http://epicure.local/thanks-for-ordering/'
+                            window.location='http://3.15.175.12/thanks-for-ordering/'
                         },
                         error:function(response){
                             console.log(response)
